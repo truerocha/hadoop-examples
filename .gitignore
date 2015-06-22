@@ -1,0 +1,10 @@
+*.class
+*.jar
+*.lock
+
+\.idea/
+\.metadata/
+\.idea/
+build/
+target/
+out/
