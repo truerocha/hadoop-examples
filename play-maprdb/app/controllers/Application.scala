@@ -17,14 +17,6 @@ object Application extends Controller {
   
   lazy val hbaseConfig = {
     val conf = HBaseConfiguration.create()
-    /*
-    conf.set("hbase.rootdir", "maprfs:///hbase")
-    conf.set("hbase.zookeeper.quorum", "mapr-cluster-n1")
-    conf.set("hbase.zookeeper.property.clientPort", "5181")
-    conf.set("hbase.cluster.distributed", "true")
-    conf.set("dfs.support.append", "true")
-    conf.set("hbase.fsutil.maprfs.impl", "org.apache.hadoop.hbase.util.FSMapRUtils")
-    */
     val hbaseAdmin = new HBaseAdmin(conf)
     
     // create a table in HBase if it doesn't exist
