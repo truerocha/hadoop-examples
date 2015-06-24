@@ -1,12 +1,21 @@
-BUILD
-=====
+Build Project
+=============
 
     sbt compile assembly
     cp target/scala-2.10/com.servian.hadoop-examples.spark-etl.jar /tmp/
     hadoop fs -put -f /tmp/com.servian.hadoop-examples.spark-etl.jar maprfs:/apps/telstra/spark/
     hadoop fs -chmod 644 maprfs:/apps/telstra/spark/com.servian.hadoop-examples.spark-etl.jar    
 
-FILE: dev-spark.conf
+Execute ETL Job
+===============
+
+    /opt/mapr/spark/spark-1.2.1/bin/spark-submit \
+      --properties-file /home/mapr/dev-spark.conf \
+      --num-executors 4 \
+      --class com.servian.spark.tasks.CreatePowers \
+      /mapr/holly2.telstra.com/apps/telstra/spark/com.servian.hadoop-examples.spark-etl.jar
+
+File: dev-spark.conf
 ====================
 
     spark.executor.memory          6g
