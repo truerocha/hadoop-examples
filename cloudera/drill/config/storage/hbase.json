@@ -1,0 +1,9 @@
+{
+  "type": "hbase",
+  "config": {
+    "hbase.zookeeper.quorum": "holly-c01.daas.corp.telstra.com",
+    "hbase.zookeeper.property.clientPort": "2181"
+  },
+  "size.calculator.enabled": false,
+  "enabled": true
+}
