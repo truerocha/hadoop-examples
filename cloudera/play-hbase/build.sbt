@@ -20,9 +20,10 @@ libraryDependencies ++= Seq(
     "org.webjars" %% "webjars-play" % "2.2.0-RC1-1"
   , "org.webjars" % "bootstrap" % "2.3.1"
   // HBase
-  , "org.apache.hadoop" % "hadoop-core" % "2.6.0-mr1-cdh5.4.0" 
+  , "org.apache.hadoop" % "hadoop-common" % "2.6.0-cdh5.4.0"
   , "org.apache.hbase" % "hbase-common" % "1.0.0-cdh5.4.0" 
   , "org.apache.hbase" % "hbase-client" % "1.0.0-cdh5.4.0" 
+  , "org.apache.hbase" % "hbase-server" % "1.0.0-cdh5.4.0"
   , "org.slf4j" % "slf4j-log4j12" % "1.7.5"
   // Add your own project dependencies in the form:
   // "group" % "artifact" % "version"

@@ -21,8 +21,6 @@ libraryDependencies ++= Seq(
   , "org.apache.spark" %% "spark-sql" % "1.3.0-cdh5.4.0" % "provided"
   //, "org.apache.spark" %% "spark-hive" % "1.3.0-cdh5.4.0" % "provided"
 
-  //, "org.htrace" % "htrace-core" % "3.0.4"
-
   //, "com.github.nscala-time" %% "nscala-time" % "1.8.0"
   //, "org.apache.commons" % "commons-lang3" % "3.3.2"
 
