@@ -1,0 +1,17 @@
+This is your new Play application
+=================================
+
+This file will be packaged with your application, when using `activator dist`.
+
+1.Successfully Created Play framework.
+     (a) brew install typesafe-activator
+     (b) activator new
+     (b) select option 6(scala project)
+     (c) select project name
+     (d) run the command activator run(it runs your project and download your whole dependency regarding your application,compile the program)
+2.
+
+
+
+
+

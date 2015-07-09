@@ -1,6 +1,7 @@
 *.class
 *.jar
 *.lock
+*.DS_Store
 
 \.idea/
 \.metadata/
