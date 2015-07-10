@@ -9,4 +9,12 @@ class Application extends Controller {
     Ok(views.html.index("Hello Manish Suriya and Subham."))
   }
 
+  def landing = Action {
+    Ok(views.html.landing())
+  }
+
+  def dashboard = Action {
+    Ok(views.html.dashboard())
+  }
+
 }
