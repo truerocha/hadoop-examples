@@ -16,9 +16,9 @@ object Application extends Controller {
  
     DB.withConnection { conn =>
       val stm = conn.createStatement()
-      val res = stm.executeQuery("""select * from emp""")
+      val res = stm.executeQuery("""select * from actor""")
       while (res.next()) {
-        list.+=(CharacterSet(res.getString(1), res.getString(2)))
+        list.+=(CharacterSet(res.getString(1), res.getString(2),res.getString(3),res.getString(4)))
       }
     }
  
