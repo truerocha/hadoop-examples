@@ -24,16 +24,4 @@ package object Application extends Controller {
  
     Ok(views.html.index("helloworld"))
   }
-<<<<<<< HEAD
-=======
-
-  def landing = Action {
-    Ok(views.html.landing())
-  }
-
-  def dashboard = Action {
-    Ok(views.html.dashboard())
-  }
-
->>>>>>> 782369db2bb0ab6dcd9b8a7e7a2097fbf901f44b
 }
