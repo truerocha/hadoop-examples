@@ -17,4 +17,8 @@ class Application extends Controller {
     Ok(views.html.dashboard())
   }
 
+  def dashSourceSystem = Action {
+    Ok(views.html.dashboard_source_system())
+  }
+
 }
