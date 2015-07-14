@@ -1,0 +1,13 @@
+@(list:Seq[CharacterSet])
+ 
+@main("Welcome to Play") {
+    <h1>Table of Character Sets</h1>
+    <table>
+    @for(t <- list) {
+        <tr>
+           <td>@t.key</td>
+           <td>@t.description</td>
+        </tr> 
+    }
+    </table>
+}
