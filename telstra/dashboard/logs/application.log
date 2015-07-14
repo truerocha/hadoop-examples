@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2015-07-14 08:58:58,825 [INFO] from play.api.libs.concurrent.ActorSystemProvider in pool-4-thread-2 - Starting application default Akka system: application
 2015-07-14 08:58:58,885 [INFO] from play.core.server.NettyServer in pool-4-thread-2 - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
 2015-07-14 08:59:09,178 [ERROR] from application in New I/O worker #1 - 
@@ -29,3 +30,7 @@ play.sbt.PlayExceptions$CompilationException: Compilation error[type Application
 	at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1056) ~[na:1.8.0_45]
 	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1689) ~[na:1.8.0_45]
 	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:157) ~[na:1.8.0_45]
+=======
+2015-07-09 18:56:12,710 [INFO] from play.api.libs.concurrent.ActorSystemProvider in pool-4-thread-3 - Starting application default Akka system: application
+2015-07-09 18:56:12,786 [INFO] from play.core.server.NettyServer in pool-4-thread-3 - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+>>>>>>> 782369db2bb0ab6dcd9b8a7e7a2097fbf901f44b
