@@ -1,4 +1,4 @@
-name := """Telstra Dashboard"""
+name := """connection"""
 
 version := "1.0-SNAPSHOT"
 
@@ -17,6 +17,5 @@ resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"
 
 // Play provides two styles of routers, one expects its actions to be injected, the
 // other, legacy style, accesses its actions statically.
-routesGenerator := InjectedRoutesGenerator
-
+// routesGenerator := InjectedRoutesGenerator
 libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.27"
