@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Starter Template - Materialize</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="libs/materialize/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="libs/c3js/c3.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+      <div class="navbar-fixed">
+        <nav class="light-blue darken-4 z-depth-2" role="navigation">
+          <div class="nav-wrapper">
+            <a href="#!" class="brand-logo center">Telstra</a>
+            <ul class="right hide-on-med-and-down">
+              <li class="active"><a href="sass.html">Home</a></li>
+              <li><a href="sass.html">Dashboard</a></li>
+              <li><a href="badges.html">Tools and Technology</a></li>
+              <li><a href="badges.html">Documentation</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+  <div class="container">
+    <div class="row">
+      <div class="col s6">
+        <div class="card hoverable green">
+          <div class="card-content">
+            <span class="card-title"><h4>Today</h4></span>
+            <span class="white-text">
+              <h5>75k records</h5>
+              <b>AppID:</b> APP-6638<br>
+              <b>Duration:</b> 5mins<br>
+              <b>Completed At:</b> 11:35PM, 15 July, 2015<br>
+              <b>Next Schedule Run:</b> APP-957 on 16, 11:35PM, 16 July, 2015<br>
+            </span>
+            </div>
+          </div>
+        </div>
+        <div class="col s6">
+        <div class="card hoverable blue ">
+          <div class="card-content">
+            <span class="card-title"><h4>Contact</h4></span>
+            <span class="white-text">
+              <b>Big Data Owner:</b> Oliver Ferdinando<br>
+              <b>Contact Person Details:</b> Andy Chan (Technical Contact)<br>
+              <b>Data Description:</b> Collaboration tool between Telstra Business (TB) end customers and TB CSRs to help customers with sales, service, and support, without calling in.<br>
+            </span>
+            </div>
+          </div>
+        </div>
+        <div class="col s12">
+          <div class="card hoverable">
+            <div class="card-content">
+              <ul class="tabs">
+                <li class="tab col s3"><a class="active" href="#timelineView">Timeline View</a></li>
+                <li class="tab col s3"><a href="#calendarView">Calendar View</a></li>
+              </ul>
+            <div id="timelineView" class="col s12">
+              <br><br>
+              <div id='timelineChart'></div>
+              <br><br>
+            </div>
+            <div id="calendarView" class="col s12">
+              <br><br>
+              Coming Soon!
+              <br><br>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="col s12">
+          <div class="card hoverable orange">
+            <div class="card-content">
+                <span class="card-title black-text">Source Systems</span>
+                <select id="sourceSystems" class="browser-default">
+                  <option value="" disabled selected>Choose Source System</option>
+                </select>
+            </div>
+          </div>
+        </div>
+        <div class="col s12">
+          <div class="row">
+            <div class="col s6">
+              <div class="card hoverable">
+                <div class="card-content">
+                  <span class="card-title black-text">Technical Details</span>
+                  <table class="striped z-depth-1" style="width:100%">
+                    <tr>
+                      <th>Host Name:</th>
+                      <td id="hostName">transbp.wg.dir.telstra.com</td>
+                    </tr>
+                    <tr>
+                      <th>Host IP:</th>
+                      <td id="hostIP">144.136.107.191</td>
+                    </tr>
+                    <tr>
+                      <th>Network:</th>
+                      <td>EDN</td>
+                    </tr>
+                    <tr>
+                      <th>Database Instance:</th>
+                      <td>Oracle Table</td>
+                    </tr>
+                    <tr>
+                      <th>File location on server:</th>
+                      <td>/bigdata</td>
+                    </tr>
+                    <tr>
+                      <th>API String:</th>
+                      <td>N/A</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>    
+    </div>
+  </div>
+  <footer class="page-footer light-blue lighten-1">
+    <div class="footer-copyright">
+      <div class="container black-text center">
+        &copy; Copyright <a class="white-text text-lighten-3" href="https://www.telstra.com.au/">Telstra</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="libs/materialize/js/materialize.min.js"></script>
+  <script src="libs/d3js/d3.min.js"></script>
+  <script src="libs/c3js/c3.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/graph.js"></script>
+
+  </body>
+</html>
