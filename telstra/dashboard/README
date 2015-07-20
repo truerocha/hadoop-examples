@@ -3,7 +3,15 @@ This is your new Play application
 
 This file will be packaged with your application, when using `activator dist`.
 
-* This steps only applicable on MAC 10.10.3(OS X Yosemite) 
+Prerequisites:-
+
+To run the Play framework, you need JDK 6 or later
+
+
+
+
+
+* This steps only applicable on MAC 10.10.4(OS X Yosemite) 
 1.Successfully Created Play framework.
      (a) Open the Terminal
      (b) brew install typesafe-activator
