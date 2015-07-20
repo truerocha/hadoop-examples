@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <title>Starter Template - Materialize</title>
+  <title>Telstra Dashboard</title>
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -15,7 +15,7 @@
       <div class="navbar-fixed">
         <nav class="light-blue darken-4 z-depth-2" role="navigation">
           <div class="nav-wrapper">
-            <a href="#!" class="brand-logo center">Telstra</a>
+            <a href="#!" class="brand-logo center">Telstra Dashboard</a>
             <ul class="right hide-on-med-and-down">
               <li class="active"><a href="sass.html">Home</a></li>
               <li><a href="sass.html">Dashboard</a></li>
@@ -25,103 +25,132 @@
           </div>
         </nav>
       </div>
-  <div class="container">
     <div class="row">
-      <div class="col s6">
-        <div class="card hoverable green">
+      <div class="col s3">
+        <!-- Grey navigation panel -->
+        <div class="card hoverable light-blue darken-4">
           <div class="card-content">
-            <span class="card-title"><h4>Today</h4></span>
-            <span class="white-text">
-              <h5>75k records</h5>
+            <span class="card-title">Source Systems</span>
+            <select id="sourceSystems" class="browser-default">
+              <option value="" disabled selected>Choose Source System</option>
+            </select>
+          </div>
+      </div> 
+      <ul class="collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header active"><h5>Today's Summary</h5></div>
+          <div class="collapsible-body">
+            <p>
+              <span class="header"><b>75k records</b></span><br>
               <b>AppID:</b> APP-6638<br>
               <b>Duration:</b> 5mins<br>
               <b>Completed At:</b> 11:35PM, 15 July, 2015<br>
               <b>Next Schedule Run:</b> APP-957 on 16, 11:35PM, 16 July, 2015<br>
-            </span>
-            </div>
+            </p>
           </div>
-        </div>
-        <div class="col s6">
-        <div class="card hoverable blue ">
-          <div class="card-content">
-            <span class="card-title"><h4>Contact</h4></span>
-            <span class="white-text">
+        </li>
+        <li>
+          <div class="collapsible-header"><h5>Internal</h5></div>
+          <div class="collapsible-body">
+            <p>
+              <b>User Story:</b> US83<br>
+              <b>Kanban State:</b> In Production<br>
               <b>Big Data Owner:</b> Oliver Ferdinando<br>
-              <b>Contact Person Details:</b> Andy Chan (Technical Contact)<br>
+            </p>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header"><h5>Application Metadata</h5></div>
+          <div class="collapsible-body">
+            <p>
+              <b>App ID:</b> APP-6638<br>
+              <b>Source:</b> LIVECHAT 1.0<br>
               <b>Data Description:</b> Collaboration tool between Telstra Business (TB) end customers and TB CSRs to help customers with sales, service, and support, without calling in.<br>
-            </span>
+              <b>Architecture Domain:</b> ONLINE<br>
+              <b>Use Cases:</b> Customer - Complaints;"Customer - CEL"<br>
+              <b>Contact Person Details:</b> Andy Chan (Technical Contact)<br>
+              <b>Data Layout:</b> Text based<br>
+            </p>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header"><h5>Sensitivity Indicators</h5></div>
+          <div class="collapsible-body">
+            <p>
+              <b>Customer Data:</b> Y<br>
+              <b>Financial and Banking Information:</b> N<br>
+              <b>Sensitive Customer Information:</b> Y<br>
+              <b>Telstra Identifiers and Service History:</b> Y<br>
+              <b>Credit Card Data:</b> N<br>
+              <b>Financial Reporting Data:</b> N<br>
+              <b>Privacy Data:</b> Y (PII 118,18,7)<br>
+              <b>Regulatory Data:</b> N<br>
+              <b>Is any “High Sensitivity” data captured:</b> Y<br>
+              <b>NBN Confidential Information:</b> N<br>
+              <b>NBN Compliant:</b> N/A<br>
+            </p>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header"><h5>SSU</h5></div>
+          <div class="collapsible-body">
+            <p>
+              <b>Is this data SSU Ready:</b> Y - Retail Only<br>
+              <b>SSU Remediation Method:</b> N/A <br>
+            </p>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header"><h5>Technical Details</h5></div>
+          <div class="collapsible-body">
+            <p>
+              <b>Historical data available:</b> 12 Months <br>
+              <b>Historical data file size:</b> 5GB<br>
+              <b>Frequency of delta / update:</b> Daily<br>
+              <b>Time data should be available:</b> Monday to Friday<br>
+              <b>Data latency:</b> One Day<br>
+              <b>Subsequent data file size as per Frequency:</b> ~50mb compressed<br>
+              <b>Format it comes in :</b> dmp.gz<br>
+              <b>Data sourcing method :</b> SFTP Push<br>
+              <b>Host Name:</b> transbp.wg.dir.telstra.com <br>
+              <b>Host IP:</b> 144.136.107.191<br>
+              <b>Port Number:</b> 22<br>
+              <b>Network (EDN, BIGPOND, NEXUS, etc.,):</b> EDN<br>
+              <b>Database instance/name/schema/type:</b> Oracle Table<br>
+              <b>File location on server:</b> /bigdata<br>
+              <b>API data sourcing string:</b> N/A<br>
+              <b>Other comments:</b> User account to connect to UCSv1: livechat-sftp, Big Data (UCS) SFTP IP address: 10.245.123.29, UCS landing directory: /data/tdc/prd/ret/land/livechat, Delimiters used = <del> for delimiter and <ret> for new record<br>
+            </p>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header"><h5>Tracking and Source Date</h5></div>
+          <div class="collapsible-body">
+            <p>
+              <b>Firewall status:</b> - <br>
+              <b>eg Tables sourced:</b> - <br>
+            </p>
+          </div>
+        </li>
+      </ul>
+      </div>
+      <div class="col s9">
+        <div class="card hoverable">
+          <div class="card-content">
+            <div class="card-action light-blue darken-3">
+              <span class="card-title white-text"><h4>Timeline View</h4></span>
+              <a href="#" class="waves-effect btn blue-text white" class="updateIntI(0)">Yearly</a>
+              <a href="#" class="waves-effect btn blue-text white" class="updateIntI(1)">Monthly</a>
+              <a href="#" class="waves-effect btn blue-text white" class="updateIntI(2)">Daily</a>
             </div>
+            <br><br>
+            <div id='timelineChart'></div>
+            <br><br>
           </div>
         </div>
-        <div class="col s12">
-          <div class="card hoverable">
-            <div class="card-content">
-              <ul class="tabs">
-                <li class="tab col s3"><a class="active" href="#timelineView">Timeline View</a></li>
-                <li class="tab col s3"><a href="#calendarView">Calendar View</a></li>
-              </ul>
-            <div id="timelineView" class="col s12">
-              <br><br>
-              <div id='timelineChart'></div>
-              <br><br>
-            </div>
-            <div id="calendarView" class="col s12">
-              <br><br>
-              Coming Soon!
-              <br><br>
-            </div>
-            </div>
-          </div>
-        </div>
-        <div class="col s12">
-          <div class="card hoverable orange">
-            <div class="card-content">
-                <span class="card-title black-text">Source Systems</span>
-                <select id="sourceSystems" class="browser-default">
-                  <option value="" disabled selected>Choose Source System</option>
-                </select>
-            </div>
-          </div>
-        </div>
-        <div class="col s12">
-          <div class="row">
-            <div class="col s6">
-              <div class="card hoverable">
-                <div class="card-content">
-                  <span class="card-title black-text">Technical Details</span>
-                  <table class="striped z-depth-1" style="width:100%">
-                    <tr>
-                      <th>Host Name:</th>
-                      <td id="hostName">transbp.wg.dir.telstra.com</td>
-                    </tr>
-                    <tr>
-                      <th>Host IP:</th>
-                      <td id="hostIP">144.136.107.191</td>
-                    </tr>
-                    <tr>
-                      <th>Network:</th>
-                      <td>EDN</td>
-                    </tr>
-                    <tr>
-                      <th>Database Instance:</th>
-                      <td>Oracle Table</td>
-                    </tr>
-                    <tr>
-                      <th>File location on server:</th>
-                      <td>/bigdata</td>
-                    </tr>
-                    <tr>
-                      <th>API String:</th>
-                      <td>N/A</td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-            </div>
-        </div>
-      </div>    
+      </div> 
     </div>
-  </div>
+
   <footer class="page-footer light-blue lighten-1">
     <div class="footer-copyright">
       <div class="container black-text center">
