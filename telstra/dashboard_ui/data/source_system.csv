@@ -1,0 +1,26 @@
+"US518","Dinko Pita","APP-978","CSCI","CSCI (Customer Service Configuration Inventory) obtains from the XDM (Telstra application), ADSL network topology and basic customer details associated with an activation.
+
+This system provides a database of record for all Cross Domain Data including Topology information
+
+Scope is for 5 files: 
+1. All fields file
+2. dslam_bras_bng
+3. adsl_summary
+4. topology
+5. bras_bng_region
+
+Description:
+1. ALL Fields: Report will provide details on unique path applicable to each service as determined by their access links.Services provisioned on the access link that has resiliency will be replicated for each unique path used by the access link.
+2. DSLAM_BRAS_BNG: This report provides a mapping of DSLAMs to BRAS (Broadband Remote Access Server)/BNG (Broadband Network Gateway) devices including the slots,module and ports identifier used for providing the connectivity.
+3.ADSL_Summary: Report displays ADSL service(topology) details and also provides slot,ports and module details for  DSLAM and  BRAS/BNG used to provide the service.
+4.Topology: Report displays topology detail i.e.  provides device name,type,slot,ports and module details for all devices  used to provide the service.
+5.BRAS_BNG_Region:Displays the details on region for all the BRAS/BNG.","DSL","Be Proactive","Technical Support: InfyCSCISupport@infosys.com 
+alternative technical contact: Eshwar_Kalro@infosys.com
+Telstra PM: Taran Rehki","http://objects.in.telstra.com.au/documents/BEE-1476 IACS
+http://objects.in.telstra.com.au/documents/BDU-7285 IASS","CSCI Test - wsweb0587.in.telstra.com.au
+CSCI Prod - wsweb0586.in.telstra.com.au","CSCI Test: 144.135.81.238
+CSCI Prod:144.135.168.69","Test and Prod: 22", "EDN (Test and Prod)","NA","Source location is not required. Destination location needs to be provided","NA","Agreed to send test data from CSCI Test to Big Data Test. 
+Big Data will use this data structure to construct Big Data queries.
+Once Big Data Prodcution is up: CSCI Prod to Big Data Prod.
+Big Data  will setup firewalls. CSCI will provide subnet mask details.
+",""

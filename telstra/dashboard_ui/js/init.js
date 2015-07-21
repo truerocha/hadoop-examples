@@ -16,17 +16,54 @@ $(document).ready(function(){
     $('ul.tabs').tabs();
   });
 
-$.getJSON( "data/data.json", function( data ) {
-  $( "#result" ).html( JSON.stringify(data) );
-  	console.log(data);
-  	ddReloadSourceSystems('#sourceSystems',data.jobs_info);
+function showSearchResults(){
+      $("#results").show();
+}
+
+function editInternal(){
+  $("#editInternal").hide();
+  $("#saveInternal").show();
+  $("#internalEditView").show();
+  $("#internalReadView").hide();
+
+  $("#lbluserstory").val('US83');
+  $("#lblkanbanstate").val('In Production');
+  $("#lblbigdataowner").val('Oliver Ferdinando');
+
+}
+
+function saveInternal(){
+  $("#saveInternal").hide();
+  $("#editInternal").show();
+  $("#internalReadView").show();
+  $("#internalEditView").hide();
+
+  $( "#userStoryVal" ).html( $('#lbluserstory').val() );
+  $( "#kanbanState" ).html( $('#lblkanbanstate').val() );
+  $( "#bigDataOwner" ).html( $('#lblbigdataowner').val() );
+
+}
+
+$(document).ready(function() {
+      $("#results").hide();
+      $("#saveInternal").hide();
+      $("#internalEditView").hide();
+      $( "#userStoryVal" ).html( " US83" );
+      $( "#kanbanState" ).html( " In Production" );
+      $( "#bigDataOwner" ).html( " Oliver Ferdinando" );
 });
 
-function ddReloadSourceSystems(ddTag,data){
-	$.each(data, function (i, item) {
-	    $(ddTag).empty().append($('<option>', { 
-	        value: item["User story"],
-	        text : item["Source"]
-	    }));
-	});
-}
+// $.getJSON( "data/data.json", function( data ) {
+//   $( "#result" ).html( JSON.stringify(data) );
+//   	console.log(data);
+//   	ddReloadSourceSystems('#sourceSystems',data.jobs_info);
+// });
+
+// function ddReloadSourceSystems(ddTag,data){
+// 	$.each(data, function (i, item) {
+// 	    $(ddTag).empty().append($('<option>', { 
+// 	        value: item["User story"],
+// 	        text : item["Source"]
+// 	    }));
+// 	});
+// }

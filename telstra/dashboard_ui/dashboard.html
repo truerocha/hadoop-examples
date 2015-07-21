@@ -17,8 +17,8 @@
           <div class="nav-wrapper">
             <a href="#!" class="brand-logo center">Telstra Dashboard</a>
             <ul class="right hide-on-med-and-down">
-              <li class="active"><a href="sass.html">Home</a></li>
-              <li><a href="sass.html">Dashboard</a></li>
+              <li><a href="sass.html">Home</a></li>
+              <li class="active"><a href="sass.html">Dashboard</a></li>
               <li><a href="badges.html">Tools and Technology</a></li>
               <li><a href="badges.html">Documentation</a></li>
             </ul>
@@ -26,17 +26,118 @@
         </nav>
       </div>
     <div class="row">
-      <div class="col s3">
-        <!-- Grey navigation panel -->
-        <div class="card hoverable light-blue darken-4">
-          <div class="card-content">
-            <span class="card-title">Source Systems</span>
-            <select id="sourceSystems" class="browser-default">
-              <option value="" disabled selected>Choose Source System</option>
-            </select>
+      <div class="col s12 m4 l2">
+        <div class="card hoverable">
+          <div class="card-content"><span class="card-title black-text">Search Bar</span>
+            <form>
+              <div class="input-field">
+                <input id="search" type="search" required>
+                <label for="search">Enter Search Text</label>
+              </div>
+              <select class="browser-default" required>
+                <option value="" disabled selected>Filter By</option>
+                <option value="1">Programs</option>
+                <option value="2">Source Systems</option>
+                <option value="3">Source Feeds</option>
+              </select><br>
+              <a href="#" class="waves-effect btn blue-text white" onclick="showSearchResults()">Search</a>
+            </form>
           </div>
+        </div>
+        <div class="row">
+          <div id="results" class="card hoverable">
+            <div class="card-content black-text"><span class="card-title black-text">Search Results</span>
+              <ul class="tabs z-depth-1">
+                <li class="tab col s3"><a class="active" href="#programs">Programs</a></li>
+                <li class="tab col s3"><a  href="#sourceSystems">Source Systems</a></li>
+                <li class="tab col s3"><a  href="#sourceFeeds">Feeds</a></li>
+              </ul>
+              <div id="programs" class="col s12 z-depth-1">
+                <div class="collection">
+                  <a href="#!" class="collection-item">DSL</a>
+                  <a href="#!" class="collection-item">Networks</a>
+                  <a href="#!" class="collection-item">CSA</a>
+                  <a href="#!" class="collection-item">ONLINE</a>
+                </div>
+              </div>
+              <div id="sourceSystems" class="col s12 z-depth-1">
+                <div class="collection">
+                  <a href="#!" class="collection-item">CSCI</a>
+                  <a href="#!" class="collection-item">LIVECHAT 1.0</a>
+                  <a href="#!" class="collection-item">CONEN 1.0</a>
+                  <a href="#!" class="collection-item">NetHealth -> NDW</a>
+                </div>
+              </div>
+              <div id="sourceFeeds" class="col s12">
+                <div class="collection">
+                  <a href="#!" class="collection-item">
+                    <b>User Story:</b>US518<br>
+                    <b>Big Data Owner:</b>Dinko Pita<br>
+                    <b>App ID:</b>APP-978<br>
+                    <b>Source:</b>CSCI<br>
+                    <b>Data Description:</b>ALL_FIELDS_FILE<br>
+                    <b>XFER Time:</b>31/12/1899 5:00:00 am<br>
+                    <b>Size:</b>2gb<br>
+                  </a>
+                  <a href="#!" class="collection-item">
+                    <b>User Story:</b>US518<br>
+                    <b>Big Data Owner:</b>Dinko Pita<br>
+                    <b>App ID:</b>APP-978<br>
+                    <b>Source:</b>CSCI<br>
+                    <b>Data Description:</b>ALL_FIELDS_FILE<br>
+                    <b>XFER Time:</b>31/12/1899 9:00:00 am<br>
+                    <b>Size:</b>3.5mb<br>
+                  </a>
+                  <a href="#!" class="collection-item">
+                    <b>User Story:</b>US518<br>
+                    <b>Big Data Owner:</b>Dinko Pita<br>
+                    <b>App ID:</b>APP-978<br>
+                    <b>Source:</b>CSCI<br>
+                    <b>Data Description:</b>ALL_FIELDS_FILE<br>
+                    <b>XFER Time:</b>31/12/1899 4:00:00 am<br>
+                    <b>Size:</b>393mb<br>
+                  </a>
+                  <a href="#!" class="collection-item">
+                    <b>User Story:</b>US518<br>
+                    <b>Big Data Owner:</b>Dinko Pita<br>
+                    <b>App ID:</b>APP-978<br>
+                    <b>Source:</b>CSCI<br>
+                    <b>Data Description:</b>ALL_FIELDS_FILE<br>
+                    <b>XFER Time:</b>31/12/1899 3:30:00 am<br>
+                    <b>Size:</b>9.9mb<br>
+                  </a>
+                  <a href="#!" class="collection-item">
+                    <b>User Story:</b>US518<br>
+                    <b>Big Data Owner:</b>Dinko Pita<br>
+                    <b>App ID:</b>APP-978<br>
+                    <b>Source:</b>CSCI<br>
+                    <b>Data Description:</b>ALL_FIELDS_FILE<br>
+                    <b>XFER Time:</b>31/12/1899 3:00:00 am<br>
+                    <b>Size:</b>7kb<br>
+                  </a>
+                </div>
+              </div>
+            </div> 
+          </div> 
+        </div> 
+      </div>
+      <div class="col s12 m4 l8">
+        <div class="card hoverable">
+          <div class="card-content">
+            <div class="card-action light-blue darken-3">
+              <span class="card-title white-text"><h4>Timeline View</h4></span>
+              <a href="#" class="waves-effect btn blue-text white" class="updateIntI(0)">Yearly</a>
+              <a href="#" class="waves-effect btn blue-text white" class="updateIntI(1)">Monthly</a>
+              <a href="#" class="waves-effect btn blue-text white" class="updateIntI(2)">Daily</a>
+            </div>
+            <br><br>
+            <div id='timelineChart'></div>
+            <br><br>
+          </div>
+        </div>
       </div> 
-      <ul class="collapsible" data-collapsible="accordion">
+      <div class="col s12 m4 l2">
+        <ul class="collapsible" data-collapsible="accordion">
         <li>
           <div class="collapsible-header active"><h5>Today's Summary</h5></div>
           <div class="collapsible-body">
@@ -52,11 +153,26 @@
         <li>
           <div class="collapsible-header"><h5>Internal</h5></div>
           <div class="collapsible-body">
-            <p>
-              <b>User Story:</b> US83<br>
-              <b>Kanban State:</b> In Production<br>
-              <b>Big Data Owner:</b> Oliver Ferdinando<br>
+            <a id="editInternal" href="#" class="waves-effect btn blue-text white" onclick="editInternal()">Edit</a>
+            <a id="saveInternal" href="#" class="waves-effect btn blue-text white" onclick="saveInternal()">Save</a>
+            <p id="internalReadView">
+              <b>User Story:</b><span id="userStoryVal"></span><br>
+              <b>Kanban State:</b><span id="kanbanState"></span><br>
+              <b>Big Data Owner:</b><span id="bigDataOwner"></span><br>
             </p>
+            <form id="internalEditView">
+                <div class="row">
+                  <div>
+                    <label for="lbluserstory">User Story</label>
+                    <input id="lbluserstory" type="text" class="validate">
+                    <label for="lblkanbanstate">Kanban State:</label>
+                    <input id="lblkanbanstate" type="text" class="validate">
+                    <label for="lblbigdataowner">Big Data Owner:</label>
+                    <input id="lblbigdataowner" type="text" class="validate">
+ 
+                  </div>
+                </div>
+            </form>
           </div>
         </li>
         <li>
@@ -134,21 +250,6 @@
         </li>
       </ul>
       </div>
-      <div class="col s9">
-        <div class="card hoverable">
-          <div class="card-content">
-            <div class="card-action light-blue darken-3">
-              <span class="card-title white-text"><h4>Timeline View</h4></span>
-              <a href="#" class="waves-effect btn blue-text white" class="updateIntI(0)">Yearly</a>
-              <a href="#" class="waves-effect btn blue-text white" class="updateIntI(1)">Monthly</a>
-              <a href="#" class="waves-effect btn blue-text white" class="updateIntI(2)">Daily</a>
-            </div>
-            <br><br>
-            <div id='timelineChart'></div>
-            <br><br>
-          </div>
-        </div>
-      </div> 
     </div>
 
   <footer class="page-footer light-blue lighten-1">
@@ -159,9 +260,8 @@
     </div>
   </footer>
 
-
   <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="libs/jquery-2.1.1.min.js"></script>
   <script src="libs/materialize/js/materialize.min.js"></script>
   <script src="libs/d3js/d3.min.js"></script>
   <script src="libs/c3js/c3.min.js"></script>

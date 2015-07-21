@@ -30,9 +30,7 @@ var timelineChart = c3.generate({
             ['LIVECHAT 1.0 - Failed', 6000,10000,31789,5000,5000,5000,5000,22655,48570,5000,5000,5000,5000,89571,5000,5000,5000,5000,5000,5000,5000,5000,5000,0,22366,0,0,0,0,60353,0,0,0,0,0,0,0,0,0 ]
         ],
         type: 'bar',
-        groups: [
-            ['LIVECHAT 1.0 - Success', 'LIVECHAT 1.0 - Warning', 'LIVECHAT 1.0 - Failed']
-        ]
+        groups: [['LIVECHAT 1.0 - Success', 'LIVECHAT 1.0 - Warning', 'LIVECHAT 1.0 - Failed']]
     },
     legend: {
         position: 'right'
@@ -71,10 +69,6 @@ var timelineChart = c3.generate({
             }
         }
     },
-    regions: [
-        {start: '2015-03-24 08:15:00', end: '2015-03-25 08:15:00', class: 'warning'},
-        {start: '2015-05-26 08:15:00', end: '2015-05-27 08:15:00', class: 'warning'},
-    ],
     bar: {
         width: {
             ratio: 0.5 // this makes bar width 50% of length between ticks
@@ -89,69 +83,3 @@ var timelineChart = c3.generate({
         enabled: true
     }
 });
-
-var gaugeChart = c3.generate({
-    bindto: '#gaugeChart',
-    data: {
-        columns: [
-            ['data', 91.4]
-        ],
-        type: 'gauge',
-        onclick: function (d, i) { console.log("onclick", d, i); },
-        onmouseover: function (d, i) { console.log("onmouseover", d, i); },
-        onmouseout: function (d, i) { console.log("onmouseout", d, i); }
-    },
-    gauge: {
-//        label: {
-//            format: function(value, ratio) {
-//                return value;
-//            },
-//            show: false // to turn off the min/max labels.
-//        },
-//    min: 0, // 0 is default, //can handle negative min e.g. vacuum / voltage / current flow / rate of change
-//    max: 100, // 100 is default
-//    units: ' %',
-//    width: 39 // for adjusting arc thickness
-    },
-    color: {
-        pattern: ['#FF0000', '#F97600', '#F6C600', '#60B044'], // the three color levels for the percentage values.
-        threshold: {
-//            unit: 'value', // percentage is default
-//            max: 200, // 100 is default
-            values: [30, 60, 90, 100]
-        }
-    },
-    size: {
-        height: 180
-    }
-});
-
-setTimeout(function () {
-    gaugeChart.load({
-        columns: [['data', 10]]
-    });
-}, 1000);
-
-setTimeout(function () {
-    gaugeChart.load({
-        columns: [['data', 50]]
-    });
-}, 2000);
-
-setTimeout(function () {
-    gaugeChart.load({
-        columns: [['data', 70]]
-    });
-}, 3000);
-
-setTimeout(function () {
-    gaugeChart.load({
-        columns: [['data', 0]]
-    });
-}, 4000);
-
-setTimeout(function () {
-    gaugeChart.load({
-        columns: [['data', 100]]
-    });
-}, 5000);
