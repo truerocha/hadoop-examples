@@ -157,8 +157,8 @@
             <a id="saveInternal" href="#" class="waves-effect btn blue-text white" onclick="saveInternal()">Save</a>
             <p id="internalReadView">
               <b>User Story:</b><span id="userStoryVal"></span><br>
-              <b>Kanban State:</b><span id="kanbanState"></span><br>
-              <b>Big Data Owner:</b><span id="bigDataOwner"></span><br>
+              <b>Kanban State:</b><span id="kanbanStateVal"></span><br>
+              <b>Big Data Owner:</b><span id="bigDataOwnerVal"></span><br>
             </p>
             <form id="internalEditView">
                 <div class="row">
@@ -169,7 +169,6 @@
                     <input id="lblkanbanstate" type="text" class="validate">
                     <label for="lblbigdataowner">Big Data Owner:</label>
                     <input id="lblbigdataowner" type="text" class="validate">
- 
                   </div>
                 </div>
             </form>
@@ -178,65 +177,169 @@
         <li>
           <div class="collapsible-header"><h5>Application Metadata</h5></div>
           <div class="collapsible-body">
-            <p>
-              <b>App ID:</b> APP-6638<br>
-              <b>Source:</b> LIVECHAT 1.0<br>
-              <b>Data Description:</b> Collaboration tool between Telstra Business (TB) end customers and TB CSRs to help customers with sales, service, and support, without calling in.<br>
-              <b>Architecture Domain:</b> ONLINE<br>
-              <b>Use Cases:</b> Customer - Complaints;"Customer - CEL"<br>
-              <b>Contact Person Details:</b> Andy Chan (Technical Contact)<br>
-              <b>Data Layout:</b> Text based<br>
+            <a id="editAppMetadata" href="#" class="waves-effect btn blue-text white" onclick="editAppMeta()">Edit</a>
+            <a id="saveAppMetadata" href="#" class="waves-effect btn blue-text white" onclick="saveAppMeta()">Save</a>
+            <p id="appMetaReadView">
+              <b>App ID:</b><span id="appIDVal"></span><br>
+              <b>Source:</b><span id="sourceVal"></span><br>
+              <b>Data Description:</b><span id="dataDescriptionVal"></span><br>
+              <b>Architecture Domain:</b><span id="architectureDomainVal"></span><br>
+              <b>Use Cases:</b><span id="useCaseVal"></span><br>
+              <b>Contact Person Details:</b><span id="contactDetailsVal"></span><br>
+              <b>Data Layout:</b><span id="dataLayoutVal"></span><br>
             </p>
+            <form id="appMetaEditView">
+                <div class="row">
+                  <div>
+                    <label for="lblAppID">App ID:</label>
+                    <input id="lblAppID" type="text" class="validate">
+                    <label for="lblSource">Source:</label>
+                    <input id="lblSource" type="text" class="validate">
+                    <label for="lblDataDesc">Data Description:</label>
+                    <input id="lblDataDesc" type="text" class="validate">
+                    <label for="lblArchDom">Architecture Domain:</label>
+                    <input id="lblArchDom" type="text" class="validate">
+                    <label for="lblUseCases">Use Cases:</label>
+                    <input id="lblUseCases" type="text" class="validate">
+                    <label for="lblContactDetails">Contact Person Details:</label>
+                    <input id="lblContactDetails" type="text" class="validate">
+                    <label for="lblDataLayout">Data Layout:</label>
+                    <input id="lblDataLayout" type="text" class="validate">
+                  </div>
+                </div>
+            </form>
           </div>
         </li>
         <li>
           <div class="collapsible-header"><h5>Sensitivity Indicators</h5></div>
           <div class="collapsible-body">
-            <p>
-              <b>Customer Data:</b> Y<br>
-              <b>Financial and Banking Information:</b> N<br>
-              <b>Sensitive Customer Information:</b> Y<br>
-              <b>Telstra Identifiers and Service History:</b> Y<br>
-              <b>Credit Card Data:</b> N<br>
-              <b>Financial Reporting Data:</b> N<br>
-              <b>Privacy Data:</b> Y (PII 118,18,7)<br>
-              <b>Regulatory Data:</b> N<br>
-              <b>Is any “High Sensitivity” data captured:</b> Y<br>
-              <b>NBN Confidential Information:</b> N<br>
-              <b>NBN Compliant:</b> N/A<br>
+            <a id="editSensitivityIndicators" href="#" class="waves-effect btn blue-text white" onclick="editSensitivityIndicators()">Edit</a>
+            <a id="saveSensitivityIndicators" href="#" class="waves-effect btn blue-text white" onclick="saveSensitivityIndicators()">Save</a>
+            <p id="sensitivityIndicatorsReadView">
+              <b>Customer Data:</b><span id="customerDataVal"></span><br>
+              <b>Financial and Banking Information:</b><span id="financialAndBankInfoVal"></span><br>
+              <b>Sensitive Customer Information:</b><span id="sensitiveCustomerInfoVal"></span><br>
+              <b>Telstra Identifiers and Service History:</b><span id="telstraIdentifierVal"></span><br>
+              <b>Credit Card Data:</b><span id="creditCardDataVal"></span><br>
+              <b>Financial Reporting Data:</b><span id="financialReportingDataVal"></span><br>
+              <b>Privacy Data:</b><span id="privacyDataVal"></span><br>
+              <b>Regulatory Data:</b><span id="regulatoryDataVal"></span><br>
+              <b>Is any “High Sensitivity” data captured:</b><span id="isSensitiveDataVal"></span><br>
+              <b>NBN Confidential Information:</b><span id="nbnConfidentialInfoVal"></span><br>
+              <b>NBN Compliant:</b><span id="nbnCompiantVal"></span><br>
             </p>
+            <form id="sensitivityIndicatorsEditView">
+                <div class="row">
+                  <div>
+                    <label for="lblcustomerData">Customer Data:</label>
+                    <input id="lblcustomerData" type="text" class="validate">
+                    <label for="lblfinancialAndBankInfo">Financial and Banking Information:</label>
+                    <input id="lblfinancialAndBankInfo" type="text" class="validate">
+                    <label for="lblsensitiveCustomerInfo">Sensitive Customer Information:</label>
+                    <input id="lblsensitiveCustomerInfo" type="text" class="validate">
+                    <label for="lbltelstraIdentifier">Telstra Identifiers and Service History:</label>
+                    <input id="lbltelstraIdentifier" type="text" class="validate">
+                    <label for="lblcreditCardData">Credit Card Data:</label>
+                    <input id="lblcreditCardData" type="text" class="validate">
+                    <label for="lblfinancialReportingData">Financial Reporting Data:</label>
+                    <input id="lblfinancialReportingData" type="text" class="validate">
+                    <label for="lblprivacyData">Privacy Data:</label>
+                    <input id="lblprivacyData" type="text" class="validate">
+                    <label for="lblregulatoryData">Regulatory Data:</label>
+                    <input id="lblregulatoryData" type="text" class="validate">
+                    <label for="lblisSensitiveData">Is any “High Sensitivity” data captured:</label>
+                    <input id="lblisSensitiveData" type="text" class="validate">
+                    <label for="lblnbnConfidentialInfo">NBN Confidential Information:</label>
+                    <input id="lblnbnConfidentialInfo" type="text" class="validate">
+                    <label for="lblnbnCompiant">NBN Compliant:</label>
+                    <input id="lblnbnCompiant" type="text" class="validate">
+                  </div>
+                </div>
+            </form>
           </div>
         </li>
         <li>
           <div class="collapsible-header"><h5>SSU</h5></div>
           <div class="collapsible-body">
-            <p>
-              <b>Is this data SSU Ready:</b> Y - Retail Only<br>
-              <b>SSU Remediation Method:</b> N/A <br>
+            <a id="editSSU" href="#" class="waves-effect btn blue-text white" onclick="editSSU()">Edit</a>
+            <a id="saveSSU" href="#" class="waves-effect btn blue-text white" onclick="saveSSU()">Save</a>
+            <p id="sSUReadView">
+              <b>Is this data SSU Ready:</b><span id="isSSUReadyVal"></span><br>
+              <b>SSU Remediation Method:</b><span id="sSURemediationVal"></span><br>
             </p>
+            <form id="sSUEditView">
+                <div class="row">
+                  <div>
+                    <label for="lblIsSSUReady">Is this data SSU Ready:</label>
+                    <input id="lblIsSSUReady" type="text" class="validate">
+                    <label for="lblSSURemediationMethod">SSU Remediation Method:</label>
+                    <input id="lblSSURemediationMethod" type="text" class="validate">
+                  </div>
+                </div>
+            </form>
           </div>
         </li>
         <li>
           <div class="collapsible-header"><h5>Technical Details</h5></div>
           <div class="collapsible-body">
-            <p>
-              <b>Historical data available:</b> 12 Months <br>
-              <b>Historical data file size:</b> 5GB<br>
-              <b>Frequency of delta / update:</b> Daily<br>
-              <b>Time data should be available:</b> Monday to Friday<br>
-              <b>Data latency:</b> One Day<br>
-              <b>Subsequent data file size as per Frequency:</b> ~50mb compressed<br>
-              <b>Format it comes in :</b> dmp.gz<br>
-              <b>Data sourcing method :</b> SFTP Push<br>
-              <b>Host Name:</b> transbp.wg.dir.telstra.com <br>
-              <b>Host IP:</b> 144.136.107.191<br>
-              <b>Port Number:</b> 22<br>
-              <b>Network (EDN, BIGPOND, NEXUS, etc.,):</b> EDN<br>
-              <b>Database instance/name/schema/type:</b> Oracle Table<br>
-              <b>File location on server:</b> /bigdata<br>
-              <b>API data sourcing string:</b> N/A<br>
-              <b>Other comments:</b> User account to connect to UCSv1: livechat-sftp, Big Data (UCS) SFTP IP address: 10.245.123.29, UCS landing directory: /data/tdc/prd/ret/land/livechat, Delimiters used = <del> for delimiter and <ret> for new record<br>
+            <a id="editTechnicalDetails" href="#" class="waves-effect btn blue-text white" onclick="editTechnicalDetails()">Edit</a>
+            <a id="saveTechnicalDetails" href="#" class="waves-effect btn blue-text white" onclick="saveTechnicalDetails()">Save</a>
+            <p id="tdReadView">
+              <b>Historical data available:</b><span id="histDataAvailVal"></span><br>
+              <b>Historical data file size:</b><span id="histDataSizeVal"></span><br>
+              <b>Frequency of delta / update:</b><span id="freqDeltaVal"></span><br>
+              <b>Time data should be available:</b><span id="timeDataAvailVal"></span><br>
+              <b>Data latency:</b><span id="dataLatencyVal"></span><br>
+              <b>Subsequent data file size as per Frequency:</b><span id="subDataSizeVal"></span><br>
+              <b>Format it comes in :</b><span id="formatVal"></span><br>
+              <b>Data sourcing method :</b><span id="dataSourcingVal"></span><br>
+              <b>Host Name:</b><span id="hostNameVal"></span><br>
+              <b>Host IP:</b><span id="hostIPVal"></span><br>
+              <b>Port Number:</b> <span id="portNumberVal"></span><br>
+              <b>Network (EDN, BIGPOND, NEXUS, etc.,):</b><span id="networkVal"></span><br>
+              <b>Database instance/name/schema/type:</b> <span id="dbInstanceVal"></span><br>
+              <b>File location on server:</b><span id="fileLocVal"></span><br>
+              <b>API data sourcing string:</b><span id="apiDSVal"></span><br>
+              <b>Other comments:</b><span id="otherCommentsVal"></span><br>
             </p>
+            <form id="tdEditView">
+                <div class="row">
+                  <div>
+                    <label for="lblhistDataAvail">Historical data available:</label>
+                    <input id="lblhistDataAvail" type="text" class="validate">
+                    <label for="lblhistDataSize">Historical data file size:</label>
+                    <input id="lblhistDataSize" type="text" class="validate">
+                    <label for="lblfreqDelta">Frequency of delta / update:</label>
+                    <input id="lblfreqDelta" type="text" class="validate">
+                    <label for="lbltimeDataAvail">Time data should be available:</label>
+                    <input id="lbltimeDataAvail" type="text" class="validate">
+                    <label for="lbldataLatency">Data latency:</label>
+                    <input id="lbldataLatency" type="text" class="validate">
+                    <label for="lblsubDataSize">Subsequent data file size as per Frequency:</label>
+                    <input id="lblsubDataSize" type="text" class="validate">
+                    <label for="lblformat">Format it comes in:</label>
+                    <input id="lblformat" type="text" class="validate">
+                    <label for="lbldataSourcing">Data sourcing method:</label>
+                    <input id="lbldataSourcing" type="text" class="validate">
+                    <label for="lblhostName">Host Name:</label>
+                    <input id="lblhostName" type="text" class="validate">
+                    <label for="lblhostIP">Host IP:</label>
+                    <input id="lblhostIP" type="text" class="validate">
+                    <label for="lblportNumber">Port Number:</label>
+                    <input id="lblportNumber" type="text" class="validate">
+                    <label for="lblnetwork">Network (EDN, BIGPOND, NEXUS, etc.,):</label>
+                    <input id="lblnetwork" type="text" class="validate">
+                    <label for="lbldbInstance">Database instance/name/schema/type:</label>
+                    <input id="lbldbInstance" type="text" class="validate">
+                    <label for="lblfileLoc">File location on server:</label>
+                    <input id="lblfileLoc" type="text" class="validate">
+                    <label for="lblapiDS">API data sourcing string:</label>
+                    <input id="lblapiDS" type="text" class="validate">
+                    <label for="lblotherComments">Other comments:</label>
+                    <input id="lblotherComments" type="text" class="validate">
+                  </div>
+                </div>
+            </form>
           </div>
         </li>
         <li>

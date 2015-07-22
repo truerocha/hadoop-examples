@@ -1,0 +1,20 @@
+{
+     "user_story": "US518",
+     "big_data_owner": "Dinko Pita",  
+     "app_id": "APP-978",
+     "source": "CSCI",
+     "data_description": "Customer Service Configuration Inventory",
+     "architecture_domain": "DSL",
+     "use_cases": "Be Proactive",
+     "contact_details": "Technical Support: InfyCSCISupport@infosys.com, Alternative Technical Contact: Eshwar_Kalro@infosys.com, Telstra PM: Taran Rehki",
+     "data_layout": "http://objects.in.telstra.com.au/documents/BEE-1476 IACS, http://objects.in.telstra.com.au/documents/BDU-7285 IASS",
+     "host_names": "CSCI Test - wsweb0587.in.telstra.com.au, CSCI Prod - wsweb0586.in.telstra.com.au",
+     "host_ip": "CSCI Test: 144.135.81.238, CSCI Prod:144.135.168.69",
+     "port_number": "Test and Prod: 22",
+     "network": "EDN (Test and Prod)",
+     "db_instance": "NA",
+     "file_location_on_server": "Source location is not required. Destination location needs to be provided",
+     "api_data_sourcing_string": "NA",
+     "other_comments": " Agreed to send test data from CSCI Test to Big Data Test.",
+     "firewall_status": ""
+}
