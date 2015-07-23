@@ -1,0 +1,10 @@
+.c3-region.bad {
+  fill: red;
+}
+.c3-region.warning {
+  fill: yellow;
+}
+.c3-region.good {
+  fill: green;
+}
+
