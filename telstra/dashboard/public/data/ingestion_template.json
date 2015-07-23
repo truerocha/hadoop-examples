@@ -1,0 +1,57 @@
+{"source_systems": [{
+                    "internal": {
+                         "user_story": "",
+                         "big_data_owner": ""  
+                    },
+                    "app_metadata":{
+                         "app_id": "",
+                         "source": "",
+                         "data_description": "",
+                         "architecture_domain": "",
+                         "use_cases": "",
+                         "contact_details": "",
+                         "data_layout": ""
+                    },
+                    "technical_details":{
+                         "host_name": "",
+                         "host_ip": "",
+                         "port_number": "",
+                         "network": "",
+                         "db_instance": "",
+                         "file_location_on_server": "",
+                         "api_data_sourcing_string": "",
+                         "other_comments": ""
+                    },
+                    "tracking":{
+                         "firewall_status": ""
+                    }
+                    },
+                    {
+                    "internal": {
+                         "user_story": "",
+                         "big_data_owner": ""  
+                    },
+                    "app_metadata":{
+                         "app_id": "",
+                         "source": "",
+                         "data_description": "",
+                         "architecture_domain": "",
+                         "use_cases": "",
+                         "contact_details": "",
+                         "data_layout": ""
+                    },
+                    "technical_details":{
+                         "host_name": "",
+                         "host_ip": "",
+                         "port_number": "",
+                         "network": "",
+                         "db_instance": "",
+                         "file_location_on_server": "",
+                         "api_data_sourcing_string": "",
+                         "other_comments": ""
+                    },
+                    "tracking":{
+                         "firewall_status": ""
+                    }
+                    }]
+}
