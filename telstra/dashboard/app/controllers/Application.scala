@@ -5,10 +5,20 @@ import play.api.mvc._
 import play.api.Play.current
 import scala.collection.mutable.MutableList
 import models.CharacterSet
+import views.html._
  
 package object Application extends Controller {
- 
-  def index = Action {
+
+
+    def index = Action {
+    Ok(views.html.index("Your new application is ready."))
+  }
+
+  def dashboard = Action {
+    Ok(views.html.dashboard("Hello World"))
+  }
+} 
+/*  def index = Action {
  
     import play.api.db._
  
@@ -24,6 +34,7 @@ package object Application extends Controller {
  
     Ok(views.html.index("helloworld"))
   }
+
 <<<<<<< HEAD
 
   def landing = Action {
@@ -41,3 +52,4 @@ package object Application extends Controller {
 =======
 >>>>>>> 58188218a2101508381b11daeb2c0490cc5225fe
 }
+*/

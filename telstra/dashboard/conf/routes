@@ -5,14 +5,15 @@
 # Home page
 GET     /                           controllers.Application.index
 
+
 # Landing Page
-GET     /land                       controllers.Application.landing
+#GET     /land                       controllers.Application.landing
 
 # Dashboard Page
 GET     /dashboard                  controllers.Application.dashboard
 
 # Dashboard Source System Page
-GET     /dash_ss                  	controllers.Application.dashSourceSystem
+#GET     /dash_ss                  	controllers.Application.dashSourceSystem
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
