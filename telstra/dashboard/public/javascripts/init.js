@@ -189,12 +189,11 @@ function saveTechnicalDetails(){
 
 $(document).ready(function() {
 
-      $.getJSON( "assets/data/ss_flat.json", function( data ) {
+      $.getJSON( "ingestion", function( data ) {
          
           console.log(data);
 
           $( "#userStoryVal" ).html( data["user_story"] );
-          $( "#kanbanStateVal" ).html( " In Production" );
           $( "#bigDataOwnerVal" ).html( data["big_data_owner"] );
 
           $( "#appIDVal" ).html( data["app_id"] );
@@ -225,7 +224,7 @@ $(document).ready(function() {
 
       // Load internal data
       // $( "#userStoryVal" ).html( " US83" );
-      // $( "#kanbanStateVal" ).html( " In Production" );
+      $( "#kanbanStateVal" ).html( " In Production" );
       // $( "#bigDataOwnerVal" ).html( " Oliver Ferdinando" );
 
       // Application MetaData Edit/ Save Buttons

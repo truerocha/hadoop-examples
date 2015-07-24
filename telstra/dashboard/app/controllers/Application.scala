@@ -6,9 +6,11 @@ import play.api.Play.current
 import scala.collection.mutable.MutableList
 import models.CharacterSet
 import views.html._
+import dbHive.ScalaHiveJDBC
+import play.api.libs.json._
+import play.api.libs.functional.syntax._
  
 package object Application extends Controller {
-
 
     def index = Action {
     Ok(views.html.index("Your new application is ready."))
@@ -17,6 +19,14 @@ package object Application extends Controller {
   def dashboard = Action {
     Ok(views.html.dashboard("Hello World"))
   }
+
+  def ingestion = Action {
+    val i = new ScalaHiveJDBC()
+    val jsonString = i.getData("org.apache.hive.jdbc.HiveDriver","jdbc:hive2://localhost:10000","mapr", "mapr","select * from default.ingestion")
+
+    Ok(jsonString)
+  }
+
 } 
 /*  def index = Action {
  
