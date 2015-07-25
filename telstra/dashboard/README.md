@@ -33,19 +33,46 @@ For convenience, you should add the Activator installation directory to your sys
     * From a shell, launch the ```activator -help``` command.
     * Create a new application with the activator command.
 
-4. The activator command can be used to create a new Play application. Activator allows you to select a template that your new application should be based off 
-    * ```activator new my-first-app```
-    * Select the play-scala template
-    *  Enter the project name 
-    *  Go into Project ```cd Project Name```
-    * Run the activator command ```activator run```
-    * Open your browser and type localhost:9000 (it will show your home page of play)
 
-
- 
+###Setting Up Mac OS X Environment 
+1. Comming soon!
                    
+###Setting Up Hive 
 
+1. Create a table on hive using the command in the hive shell: 
+		```
+		
+		create table ingestion( 	user_story string, 
+							big_data_owner string,
+							app_id string,
+							source string,
+							data_description string,
+							architecture_domain string,
+							use_cases string, 
+							contact_details string, 
+							data_layout string,
+							host_names string,
+							host_ip string,
+							port_number string,
+							network string,
+							db_instance string,
+							file_location_on_server string, 
+							api_data_sourcing_string string,
+							other_comments string);		```
+2. Load the ingestion.csv file in 'hadoop-examples/telstra/data' into hive using the command in the hive shell: 
+		load data inpath '/ingestion.csv' overwrite into table ingestion;
+		
 
-
+###Running the Scala Application
+1. In your terminal change directory to 'dashboard'
+2. Inside ```dashboard/app/controllers/Application.scala```, please change the url, username and password according to your local hive setup
+3. Once your inside 'dashboard', please clean, compile and run the play-scala project using the following command,
+	```
+	activator clean && activator compile && activator run
+	```
+4. In your browser of choice, you may browse to the following URLs: 
+	* To view the index page, browse to http://localhost:9000/index.html
+	* To view the dashboard page, browse to http://localhost:9000/dashboard.html
+	* To view the injestion page, browse to http://localhost:9000/injestion  
 
 
