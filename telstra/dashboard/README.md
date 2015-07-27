@@ -34,45 +34,76 @@ For convenience, you should add the Activator installation directory to your sys
     * Create a new application with the activator command.
 
 
-###Setting Up Mac OS X Environment 
-1. Comming soon!
-                   
-###Setting Up Hive 
+###Setting Up Environment the Mac OS X Environment
 
-1. Create a table on hive using the command in the hive shell: 
+1. Clone the git repository: ``` git clone ```
+2. Change directory to: ```hadoop-examples/telstra/dashboard```
+3. Change mode of the ```chmod u+x Brew-java-scala-activator.sh``
+4. Run the 'Brew-java-scala-activator.sh' script(This script will install brew, java, scala, activator on to you Mac OS X System): ```./Brew-java-scala-activator.sh```
+5. To Clean, Compile and Run the project please:
+```
+	activator clean
+	activator compile
+	activator run 
+	```
+6. Using your browser of choice, go to 
+	```
+	
+		localhost:9000
+		localhost:9000/index				--> To View the Index Page
+		localhost:9000/dasboard				--> To View the Dashboard Page
+		localhost:9000/getTables			--> To View the Get Tables data from the rest service
+		localhost:9000/getSourceLineages --> To View the Get Source Lineages data from the rest service
+		localhost:9000/getColumns 			--> To View the Get Columns data from the rest service
+		localhost:9000/getSourceMatrix	--> To View the Get Source Matrix from the rest service
 		```
-		
-		create table ingestion( 	user_story string, 
-							big_data_owner string,
-							app_id string,
-							source string,
-							data_description string,
-							architecture_domain string,
-							use_cases string, 
-							contact_details string, 
-							data_layout string,
-							host_names string,
-							host_ip string,
-							port_number string,
-							network string,
-							db_instance string,
-							file_location_on_server string, 
-							api_data_sourcing_string string,
-							other_comments string);		```
-2. Load the ingestion.csv file in 'hadoop-examples/telstra/data' into hive using the command in the hive shell: 
-		load data inpath '/ingestion.csv' overwrite into table ingestion;
-		
-
-###Running the Scala Application
-1. In your terminal change directory to 'dashboard'
-2. Inside ```dashboard/app/controllers/Application.scala```, please change the url, username and password according to your local hive setup
-3. Once your inside 'dashboard', please clean, compile and run the play-scala project using the following command,
+7. The dashboard/conf/application.conf contains the mysql driver, url, username and password:
 	```
-	activator clean && activator compile && activator run
-	```
-4. In your browser of choice, you may browse to the following URLs: 
-	* To view the index page, browse to http://localhost:9000/index.html
-	* To view the dashboard page, browse to http://localhost:9000/dashboard.html
-	* To view the injestion page, browse to http://localhost:9000/injestion  
+			
+			db.hive.driver="com.mysql.jdbc.Driver"
+			db.hive.url="jdbc:mysql://localhost:3306/hive"
+			db.hive.user="<username>"
+			db.hive.pass="<password>"
+			```
+	
+Note: The dashboard panel should contain the data from the getTables and the getSourceMatrix and can be reviewed in the dashboard/public/javascripts/init.js file
 
-
+###Setting up the MySQL Environment
+1. Install MySQL 5.1.73: ``` ```
+2. Load the hive_backup.sql: mysql -u <username> -p < hive_backup.sql, enter your password
+3. Use the hive database: ``` use hive;```
+3. Create the Source_Matrix table:
+```
+		
+		CREATE TABLE SOURCE_MATRIX(
+		user_story VARCHAR(1000),
+		big_data_owner VARCHAR(1000),
+		app_id VARCHAR(1000),
+		source VARCHAR(1000),
+		data_description VARCHAR(1000),
+		architecture_domain VARCHAR(1000),
+		use_cases VARCHAR(1000), 
+		contact_details VARCHAR(1000), 
+		data_layout VARCHAR(1000),
+		host_names VARCHAR(1000),
+		host_ip VARCHAR(1000),
+		port_number VARCHAR(1000),
+		network VARCHAR(1000),
+		db_instance VARCHAR(1000),
+		file_location_on_server VARCHAR(1000), 
+		api_data_sourcing_string VARCHAR(1000),
+		other_comments VARCHAR(1000)
+		);
+		```
+4. Insert Sample Data:
+		
+		```
+		INSERT INTO SOURCE_MATRIX(user_story,big_data_owner,app_id,source,
+		data_description,architecture_domain,use_cases, contact_details, data_layout,
+		host_names,host_ip,port_number,network,db_instance,file_location_on_server, 
+		api_data_sourcing_string,other_comments)
+		VALUES("US83","Oliver Ferdinando","APP-6638","LIVECHAT 1.0",
+		"Collaboration tool between Telstra Business (TB) end customers and TB CSRs to help customers with sales, service, and support, without calling in.",
+		"ONLINE","Customer - ComplaintsCustomer - CEL","Andy Chan (Technical Contact)","Text based",
+		"transbp.wg.dir.telstra.com","144.136.107.191","22","EDN","Oracle Table","hdfs://tdcdv2/data/tdc/dv1/ret/base/livechat/livechat_transscript","NA","User account to connect to UCSv1");
+```
