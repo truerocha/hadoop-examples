@@ -26,3 +26,7 @@ GET     /getSourceLineage           controllers.Application.getSourceLineage
 
 # Get Columns Page
 GET     /getColumns                	controllers.Application.getColumns
+
+
+# get Source Matrix Page
+GET     /getSourceMatrix               	controllers.Application.getSourceMatrix

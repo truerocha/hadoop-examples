@@ -216,14 +216,42 @@ $(document).ready(function() {
 
       // });
 
+      $.getJSON( "getSourceMatrix", function( data ) {
+          var arr = data["datas"].replace(")", "").split(":");
+          console.log(arr);
+
+          $( "#userStoryVal" ).html( arr[1].split("as")[0] );
+          $( "#bigDataOwnerVal" ).html( arr[2].split("as")[0] );
+
+          $( "#appIDVal" ).html( arr[3].split("as")[0] );
+          // $( "#sourceVal" ).html(arr[2].split("as")[0] );
+          $( "#dataDescriptionVal" ).html( arr[5].split("as")[0] );
+          $( "#architectureDomainVal" ).html( arr[6].split("as")[0] );
+          $( "#useCaseVal" ).html( arr[7].split("as")[0]);
+          $( "#contactDetailsVal" ).html( arr[8].split("as")[0] );
+          $( "#dataLayoutVal" ).html( arr[9].split("as")[0] );
+
+              // Load Technical Details, data
+          $( "#hostNameVal" ).html( arr[10].split("as")[0] );
+          $( "#hostIPVal" ).html( arr[11].split("as")[0]  );
+          $( "#portNumberVal" ).html( arr[1].split("as")[0] );
+          $( "#networkVal" ).html( arr[13].split("as")[0]  );
+          $( "#dbInstanceVal" ).html( arr[14].split("as")[0] );
+          $( "#fileLocVal" ).html( arr[15].split("as")[0] + arr[16].split("as")[0]  );
+          $( "#apiDSVal" ).html( arr[17].split("as")[0]  );
+          $( "#otherCommentsVal" ).html( arr[18].split("as")[0]   );
+
+      });
       $.getJSON( "getColumns", function( data ) {
          
-          console.log(data);
+          // console.log(data);
 
           $( "#sourceVal" ).html( data["source_systems"].replace(")", "").split(",")[1] );
           $( "#sSURemediationVal" ).html( data["ssu_value"].replace(")", "").split(",")[1] );
-
+          $( "#fileLocVal" ).html( data["hdfs_paths"].replace(")", "").split(",")[1] );
       });
+
+
       // Search Results
       $("#results").hide();
 

@@ -288,6 +288,39 @@ package object Application extends Controller {
     var jsonString = Json.stringify(json)
     Ok(jsonString)
   }
+
+  def getSourceMatrix = Action {
+    // val i = new ScalaHiveJDBC()
+    // val jsonString = i.getData("org.apache.hive.jdbc.HiveDriver","jdbc:hive2://localhost:10000","mapr", "mapr","select * from default.ingestion")
+
+    // access "orders" database instead of "default"
+    var json = Json.toJson(1)
+    DB.withConnection("hive") { implicit c =>
+      // val result: Boolean = SQL("select * from cds limit 10").execute()
+      // val json = Json.toJson(result)
+      // val jsonString = Json.stringify(json)
+
+      // Create an SQL query
+      val cds = SQL("""
+                    select * from source_matrix limit 1
+                    """)
+       
+      val datas = cds().map(
+        row => "data" -> row
+      ).toList
+
+      val datasList = datas.mkString(",")
+
+      json = Json.toJson(
+      Map(
+          "datas" -> Json.toJson(datasList)
+        ))
+      
+    }
+
+    var jsonString = Json.stringify(json)
+    Ok(jsonString)
+  }
   // def ingestion = Action {
   //   // val i = new ScalaHiveJDBC()
   //   // val jsonString = i.getData("org.apache.hive.jdbc.HiveDriver","jdbc:hive2://localhost:10000","mapr", "mapr","select * from default.ingestion")
