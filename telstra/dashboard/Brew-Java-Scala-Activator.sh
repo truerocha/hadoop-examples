@@ -88,7 +88,8 @@ function install_scala
 
      Log 'DEBUG' "function download_and_install start"
 
-     if type -p scala; then
+     which -s scala
+     if [[ $? != 0 ]] ; then
           echo "found scala executable" in PATH
           _scala=scala
       elif [[ -n "$SCALA_HOME" ]] && [[ -x "$SCALA_HOME/local/bin/scala" ]];  then
@@ -125,7 +126,8 @@ function install_Activator
 
         Log 'DEBUG' "function download_install_brew start"
 
-     if type -p typeactivator; then
+     which -s activator
+     if [[ $? != 0 ]] ; then
          echo "found activator executable" in $PATH
          _activator=activator
      elif [[ -n "$activator_HOME" ]] && [[ -x "$activator_HOME/local/bin/scala" ]];  then
