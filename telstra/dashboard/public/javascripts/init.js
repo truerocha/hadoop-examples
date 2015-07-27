@@ -189,30 +189,39 @@ function saveTechnicalDetails(){
 
 $(document).ready(function() {
 
-      $.getJSON( "ingestion", function( data ) {
+      // $.getJSON( "getColumns", function( data ) {
+         
+      //     console.log(data);
+
+      //     $( "#userStoryVal" ).html( data["user_story"] );
+      //     $( "#bigDataOwnerVal" ).html( data["big_data_owner"] );
+
+      //     $( "#appIDVal" ).html( data["app_id"] );
+      //     $( "#sourceVal" ).html( data["source"] );
+      //     $( "#dataDescriptionVal" ).html( data["data_description"] );
+      //     $( "#architectureDomainVal" ).html( data["architecture_domain"] );
+      //     $( "#useCaseVal" ).html( data["use_cases"] );
+      //     $( "#contactDetailsVal" ).html( data["contact_details"] );
+      //     $( "#dataLayoutVal" ).html( data["data_layout"] );
+
+      //         // Load Technical Details, data
+      //     $( "#hostNameVal" ).html( data["host_names"] );
+      //     $( "#hostIPVal" ).html( data["host_ip"]  );
+      //     $( "#portNumberVal" ).html( data["port_number"]  );
+      //     $( "#networkVal" ).html( data["network"]  );
+      //     $( "#dbInstanceVal" ).html( data["db_instance"]  );
+      //     $( "#fileLocVal" ).html( data["file_location_on_server"]  );
+      //     $( "#apiDSVal" ).html( data["api_data_sourcing_string"]  );
+      //     $( "#otherCommentsVal" ).html( data["other_comments"]  );
+
+      // });
+
+      $.getJSON( "getColumns", function( data ) {
          
           console.log(data);
 
-          $( "#userStoryVal" ).html( data["user_story"] );
-          $( "#bigDataOwnerVal" ).html( data["big_data_owner"] );
-
-          $( "#appIDVal" ).html( data["app_id"] );
-          $( "#sourceVal" ).html( data["source"] );
-          $( "#dataDescriptionVal" ).html( data["data_description"] );
-          $( "#architectureDomainVal" ).html( data["architecture_domain"] );
-          $( "#useCaseVal" ).html( data["use_cases"] );
-          $( "#contactDetailsVal" ).html( data["contact_details"] );
-          $( "#dataLayoutVal" ).html( data["data_layout"] );
-
-              // Load Technical Details, data
-          $( "#hostNameVal" ).html( data["host_names"] );
-          $( "#hostIPVal" ).html( data["host_ip"]  );
-          $( "#portNumberVal" ).html( data["port_number"]  );
-          $( "#networkVal" ).html( data["network"]  );
-          $( "#dbInstanceVal" ).html( data["db_instance"]  );
-          $( "#fileLocVal" ).html( data["file_location_on_server"]  );
-          $( "#apiDSVal" ).html( data["api_data_sourcing_string"]  );
-          $( "#otherCommentsVal" ).html( data["other_comments"]  );
+          $( "#sourceVal" ).html( data["source_systems"].replace(")", "").split(",")[1] );
+          
 
       });
       // Search Results
