@@ -221,7 +221,7 @@ $(document).ready(function() {
           console.log(data);
 
           $( "#sourceVal" ).html( data["source_systems"].replace(")", "").split(",")[1] );
-          
+          $( "#sSURemediationVal" ).html( data["ssu_value"].replace(")", "").split(",")[1] );
 
       });
       // Search Results
@@ -272,7 +272,7 @@ $(document).ready(function() {
 
       // Load SSU data
       $( "#isSSUReadyVal" ).html( " Y - Retail Only" );
-      $( "#sSURemediationVal" ).html( " N/A" );
+      // $( "#sSURemediationVal" ).html( " N/A" );
 
       // Technical Details Edit/ Save Buttons
       $("#saveTechnicalDetails").hide();

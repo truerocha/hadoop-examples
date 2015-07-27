@@ -14,9 +14,9 @@ object Application extends Controller {
 
     val list = MutableList[CharacterSet]()
 
-    DB.withConnection("manish") { conn =>
+    DB.withConnection { conn =>
       val stm = conn.createStatement()
-      val res = stm.executeQuery("show databases")
+      val res = stm.executeQuery("select count(*) from default.customers")
       while (res.next()) {
         list.+=(CharacterSet(res.getString(1)))
       }
