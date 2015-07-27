@@ -69,9 +69,8 @@ For convenience, you should add the Activator installation directory to your sys
 Note: The dashboard panel should contain the data from the getTables and the getSourceMatrix and can be reviewed in the dashboard/public/javascripts/init.js file
 
 ###Setting up the MySQL Environment
-1. Install MySQL 5.1.73: ``` ```
-2. Load the hive_backup.sql: mysql -u <username> -p < hive_backup.sql, enter your password
-3. Use the hive database: ``` use hive;```
+1. Load the hive_backup.sql: mysql -u <username> -p < hive_backup.sql, enter your password
+2. Use the hive database: ``` use hive;```
 3. Create the Source_Matrix table:
 ```
 		
