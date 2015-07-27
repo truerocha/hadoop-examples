@@ -1,3 +1,4 @@
+@(message: String)
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +8,11 @@
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="libs/materialize/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="@routes.Assets.versioned("libs/materialize/css/materialize.min.css")" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="@routes.Assets.versioned("stylesheets/style.css")" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
+@message
   <div class="navbar-fixed">
         <nav class="light-blue darken-4 z-depth-2" role="navigation">
           <div class="nav-wrapper">
@@ -28,7 +30,7 @@
         <div class="container">
           <br><br>
           <div class="center">
-            <img class="materialboxed" data-caption="Telstra Logo" width="150" height="150" src="images/telstra-logo.png" vspace="20">
+            <img class="materialboxed" data-caption="Telstra Logo" width="150" height="150" src="@routes.Assets.versioned("images/telstra-logo.png")" vspace="20">
         </div>
           <h1 class="header center light-blue-text">Telstra Big Data Dashboard</h1>
           <div class="row center">
@@ -124,8 +126,8 @@
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="libs/materialize/js/materialize.min.js"></script>
-  <script src="js/init.js"></script>
+  <script src="@routes.Assets.versioned("libs/materialize/js/materialize.min.js")"></script>
+  <script src="@routes.Assets.versioned("javascript/init.js")"></script>
 
   </body>
 </html>

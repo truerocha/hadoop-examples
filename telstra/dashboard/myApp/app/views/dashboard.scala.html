@@ -1,3 +1,4 @@
+@(message: String)
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,9 +8,9 @@
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="libs/materialize/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="libs/c3js/c3.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="@routes.Assets.versioned("libs/materialize/css/materialize.min.css")" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="@routes.Assets.versioned("libs/c3js/c3.min.css")" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="@routes.Assets.versioned("stylesheets/style.css")" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
       <div class="navbar-fixed">
@@ -364,12 +365,12 @@
   </footer>
 
   <!--  Scripts-->
-  <script src="libs/jquery-2.1.1.min.js"></script>
-  <script src="libs/materialize/js/materialize.min.js"></script>
-  <script src="libs/d3js/d3.min.js"></script>
-  <script src="libs/c3js/c3.min.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/graph.js"></script>
+  <script src="@routes.Assets.versioned("libs/jquery-2.1.1.min.js")"></script>
+  <script src=@routes.Assets.versioned("libs/materialize/js/materialize.min.js")"></script>
+  <script src=@routes.Assets.versioned("libs/d3js/d3.min.js")"></script>
+  <script src="@routes.Assets.versioned("libs/c3js/c3.min.js")"></script>
+  <script src="@routes.Assets.versioned("javascript/init.js")"></script>
+  <script src="@routes.Assets.versioned("javascript/graph.js")"></script>
 
   </body>
 </html>
