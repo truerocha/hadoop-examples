@@ -22,7 +22,7 @@ function Log
 } 
 
 
-# Install brew if not installed already, otherwise update to latest version.
+Install brew if not installed already, otherwise update to latest version.
 
  function install_brew
  {
@@ -38,6 +38,7 @@ function Log
      else
          Log 'INFO' "Updating Brew"
          brew update
+         brew upgrade
      fi
  
      Log 'DEBUG' "function install_brew end"
@@ -62,8 +63,8 @@ function install_java {
          echo "Installing Java"
          brew install caskroom/cask/brew-cask
          brew tap caskroom/versions
-         read -p "enter the java_version:"java_version
-         brew cask search $java_version
+         #read -p "enter the java_version:"java_version
+         brew cask install java7
      fi
  
      if [[ "$_java" ]]; then
@@ -72,7 +73,7 @@ function install_java {
          if [[ "$version" > "5.0" ]]; then
              echo version is more than 1.5
          else
-              echo "java Update"     
+             echo "java Update"     
          fi
      fi
      
@@ -82,7 +83,7 @@ function install_java {
 
 #Check Scala is installed or not, If java is installed check Version, Download and installed lastest Version of Java  
 
-function download_and_install_scala
+function install_scala
 {
 
      Log 'DEBUG' "function download_and_install start"
@@ -97,8 +98,8 @@ function download_and_install_scala
          #Insatlling the Scala
          Log 'INFO' "Downloading scala"
           echo "Installing Scala"
-          read -p "enter the scala_version:"scala_version
-           brew Install scala scala_version
+          #read -p "enter the scala_version:"scala_version
+           brew Install scala 2.11.7
       fi
 
       if [[ "$_scala" ]]; then
@@ -119,7 +120,7 @@ function download_and_install_scala
 
 #Check Typesafe Activator is installed or not, If typesafe Activator is installed check Version, Download and installed lastest Version of Java 
 
-function download_install_Activator
+function install_Activator
 {
 
         Log 'DEBUG' "function download_install_brew start"
@@ -134,8 +135,8 @@ function download_install_Activator
          # Installing Activator
          Log 'INFO' "Downloading Activator"
          echo "Installing Activator"
-         read -p "enter the Activator_version:"Activator_version
-          brew install activator Activator_version 
+         #read -p "enter the Activator_version:"Activator_version
+          brew install activator 0.13.8 
      fi
 
      if [[ "$_activator" ]]; then
@@ -154,6 +155,14 @@ function download_install_Activator
 }
 
 
+function download_and_install
+{
+	
+   install_brew
+   install_java
+   install_scala
+   install_Activator
+}
 
 function main
 {

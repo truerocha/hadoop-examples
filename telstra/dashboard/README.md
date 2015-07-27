@@ -36,11 +36,15 @@ For convenience, you should add the Activator installation directory to your sys
 4. The activator command can be used to create a new Play application. Activator allows you to select a template that your new application should be based off 
     * ```activator new my-first-app```
     * Select the play-scala template
-    *  Enter the project name 
-    *  Go into Project ```cd Project Name```
+    * Enter the project name 
+    * Go into Project ```cd Project Name```
     * Run the activator command ```activator run```
     * Open your browser and type localhost:9000 (it will show your home page of play)
-
+    * Run the script Brew-java-scala-activator.sh
+    * git clone ""
+    * cd
+    * activator run
+    * 
 
  
                    
