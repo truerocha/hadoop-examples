@@ -54,21 +54,7 @@ For convenience, you should add the Activator installation directory to your sys
 	```
 	sbt clean && sbt compile && sbt run
 	```
-5. Using your browser of choice and go to ``` localhost:9000/```
-                   
-
-
-###Setting Up Environment the Mac OS X Environment
-
-1. Clone the git repository: ``` git clone https://github.com/servian/hadoop-examples.git```
-2. Change directory to: ```hadoop-examples/telstra/dashboard```
-3. Change mode of the ```chmod u+x Brew-java-scala-activator.sh``
-4. Run the 'Brew-java-scala-activator.sh' script(This script will install brew, java, scala, activator on to you Mac OS X System): ```./Brew-java-scala-activator.sh```
-5. To Clean, Compile and Run the project please:
-```
-	sbt clean && sbt compile && sbt run 
-	```
-6. Using your browser of choice, go to 
+5. Using your browser of choice and go to  
 	```
 	
 		localhost:9000
