@@ -2,11 +2,12 @@
 *.jar
 *.lock
 *.DS_Store
+*.log 
 
 \.idea/
 \.metadata/
 \.idea/
 build/
 target/
-out/
-*.log
+out
+
