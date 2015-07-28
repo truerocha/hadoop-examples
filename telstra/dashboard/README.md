@@ -50,13 +50,11 @@ For convenience, you should add the Activator installation directory to your sys
 3. Change mode of the shell script Brew-java-scala-activator.sh, using the command: ``` chmod u+x Brew-java-scala-activator.sh```
 4. Run the shell script Brew-java-scala-activator.sh to install brew, java, scala and activator using the following command:
 	``` ./Brew-java-scala-activator.sh```
-3. Clean, compile and run the play-scala project using,
+4. Clean, compile and run the play-scala project using,
 	```
-	activator clean
-	activator compile 
-	activator run
+	sbt clean && sbt compile && sbt run
 	```
-4. Using your browser of choice and go to ``` localhost:9000/```
+5. Using your browser of choice and go to ``` localhost:9000/```
                    
 
 
