@@ -246,8 +246,8 @@ $(document).ready(function() {
          
           // console.log(data);
 
-          $( "#sourceVal" ).html( data["source_systems"].replace(")", "").split(",")[1] );
-          $( "#sSURemediationVal" ).html( data["ssu_value"].replace(")", "").split(",")[1] );
+          $( "#sourceVal" ).html( data["source_systems"].replace(")", "").split(",")[1].split("/")[8] );
+          $( "#sSURemediationVal" ).html( data["ssu_value"].replace(")", "").split(",")[1].split("/")[6] );
           $( "#fileLocVal" ).html( data["hdfs_paths"].replace(")", "").split(",")[1] );
       });
 
