@@ -1,5 +1,4 @@
-
-#Telstra Big Data Monitoring Dashboard
+# Telstra Big Data Monitoring Dashboard
 
 ##Overview
 
@@ -66,7 +65,7 @@ For convenience, you should add the Activator installation directory to your sys
 	
 6. Using your browser of choice and go to:-
 	```
-	   localhost:9000
+	  localhost:9000
 		localhost:9000/index				--> To View the Index Page
 		localhost:9000/dasboard				--> To View the Dashboard Page
 		localhost:9000/getTables			--> To View the Get Tables data from the rest service
@@ -75,7 +74,8 @@ For convenience, you should add the Activator installation directory to your sys
 		localhost:9000/getSourceMatrix	--> To View the Get Source Matrix from the rest service
 	```	   
 7. The dashboard/conf/application.conf contains the mysql driver, url, username and password:-
-	``` db.hive.driver="com.mysql.jdbc.Driver"
+	``` 
+     db.hive.driver="com.mysql.jdbc.Driver"
 		 db.hive.url="jdbc:mysql://localhost:3306/hive"
 		 db.hive.user="<username>"
 		 db.hive.pass="<password>"
@@ -85,11 +85,10 @@ For convenience, you should add the Activator installation directory to your sys
  
 ###Setting up the MySQL Environment 
 
-1. Load the hive_backup.sql: mysql -u <username> -p < hive_backup.sql, enter your password
+1. Load the hive_backup.sql: `mysql -u <username> -p < hive_backup.sql`, enter your password
 2. Use the hive database: ``` use hive;```
 3. Create the Source_Matrix table:
-```
-		
+    ```sql
 		CREATE TABLE SOURCE_MATRIX(
 		user_story VARCHAR(1000),
 		big_data_owner VARCHAR(1000),
@@ -112,7 +111,7 @@ For convenience, you should add the Activator installation directory to your sys
 		```
 4. Insert Sample Data:
 		
-		```
+		```sql
 		INSERT INTO SOURCE_MATRIX(user_story,big_data_owner,app_id,source,
 		data_description,architecture_domain,use_cases, contact_details, data_layout,
 		host_names,host_ip,port_number,network,db_instance,file_location_on_server, 
@@ -121,4 +120,4 @@ For convenience, you should add the Activator installation directory to your sys
 		"Collaboration tool between Telstra Business (TB) end customers and TB CSRs to help customers with sales, service, and support, without calling in.",
 		"ONLINE","Customer - ComplaintsCustomer - CEL","Andy Chan (Technical Contact)","Text based",
 		"transbp.wg.dir.telstra.com","144.136.107.191","22","EDN","Oracle Table","hdfs://tdcdv2/data/tdc/dv1/ret/base/livechat/livechat_transscript","NA","User account to connect to UCSv1");
-```
+    ```
