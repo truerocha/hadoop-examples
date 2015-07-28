@@ -1,5 +1,4 @@
 *.class
-*.jar
 *.lock
 *.DS_Store
 *.log 
@@ -11,3 +10,4 @@ build/
 target/
 out
 
+*.log
