@@ -1,3 +1,5 @@
+#!/bin/bash
+
 typeset -r SYSEXECS=/bin
 typeset -r E_OK=0
 typeset -r E_ABORT=1
@@ -28,8 +30,8 @@ Install brew if not installed already, otherwise update to latest version.
  {
      Log 'DEBUG' "function install_brew start"
  
-     which -s brew
-     if [[ $? != 0 ]] ; then
+     if type -p brew; then
+     
          # Download and install brew from github
          Log 'INFO' "Downloading brew"
          ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -50,8 +52,7 @@ function install_java {
  
      Log 'DEBUG' "function download_and_install start"
   
-     which -s java
-     if [[ $? != 0 ]] ; then
+     if type -p java; then
          echo found java executable in PATH
          _java=java
      elif [[ -n "$JAVA_HOME" ]] && [[ -x "$JAVA_HOME/bin/java" ]];  then
@@ -88,8 +89,7 @@ function install_scala
 
      Log 'DEBUG' "function download_and_install start"
 
-     which -s scala
-     if [[ $? != 0 ]] ; then
+     if type -p scala; then
           echo "found scala executable" in PATH
           _scala=scala
       elif [[ -n "$SCALA_HOME" ]] && [[ -x "$SCALA_HOME/local/bin/scala" ]];  then
@@ -126,8 +126,7 @@ function install_Activator
 
         Log 'DEBUG' "function download_install_brew start"
 
-     which -s activator
-     if [[ $? != 0 ]] ; then
+     if type -p activator; then
          echo "found activator executable" in $PATH
          _activator=activator
      elif [[ -n "$activator_HOME" ]] && [[ -x "$activator_HOME/local/bin/scala" ]];  then

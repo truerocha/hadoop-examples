@@ -42,41 +42,49 @@ For convenience, you should add the Activator installation directory to your sys
 
 ###Setting Up the Environment Using Brew-java-scala-activator.sh
 
-1. Clone the respository using the following command:
+1. Clone the respository using the following command :-
+ ```
+ git clone https://github.com/servian/hadoop-examples.git
+  ```
+2. Change directory to :- 
+ ```
+ cd hadoop-examples/telstra/dashboard
+ ```
+
+3. Change mode of the shell script Brew-java-scala-activator.sh, using the command:- 
+  ``` 
+   chmod u+x Brew-java-scala-activator.sh
    ```
-   git clone https://github.com/servian/hadoop-examples.git 
-   ```
-2. Change directory to, ```cd hadoop-examples/telstra/dashboard```
-3. Change mode of the shell script Brew-java-scala-activator.sh, using the command: ``` chmod u+x Brew-java-scala-activator.sh```
-4. Run the shell script Brew-java-scala-activator.sh to install brew, java, scala and activator using the following command:
-	``` ./Brew-java-scala-activator.sh```
-5. Clean, compile and run the play-scala project using,
+4. Run the shell script Brew-java-scala-activator.sh to install brew, java, scala and activator using the following command:-
+  ``` 
+  ./Brew-java-scala-activator.sh
+  ```  
+5. Clean, compile and run the play-scala project using:-
 	```
 	sbt clean && sbt compile && sbt run
 	```
-6. Using your browser of choice and go to  
-	```
 	
-		localhost:9000
+6. Using your browser of choice and go to:-
+	```
+	   localhost:9000
 		localhost:9000/index				--> To View the Index Page
 		localhost:9000/dasboard				--> To View the Dashboard Page
 		localhost:9000/getTables			--> To View the Get Tables data from the rest service
 		localhost:9000/getSourceLineages --> To View the Get Source Lineages data from the rest service
 		localhost:9000/getColumns 			--> To View the Get Columns data from the rest service
 		localhost:9000/getSourceMatrix	--> To View the Get Source Matrix from the rest service
-		```
-7. The dashboard/conf/application.conf contains the mysql driver, url, username and password:
+	```	   
+7. The dashboard/conf/application.conf contains the mysql driver, url, username and password:-
+	``` db.hive.driver="com.mysql.jdbc.Driver"
+		 db.hive.url="jdbc:mysql://localhost:3306/hive"
+		 db.hive.user="<username>"
+		 db.hive.pass="<password>"
 	```
-			
-			db.hive.driver="com.mysql.jdbc.Driver"
-			db.hive.url="jdbc:mysql://localhost:3306/hive"
-			db.hive.user="<username>"
-			db.hive.pass="<password>"
-			```
-	
-Note: The dashboard panel should contain the data from the getTables and the getSourceMatrix and can be reviewed in the dashboard/public/javascripts/init.js file
+	Note: The dashboard panel should contain the data from the getTables and the getSourceMatrix and can be reviewed in the dashboard/public/javascripts/init.js file 
+ 
+ 
+###Setting up the MySQL Environment 
 
-###Setting up the MySQL Environment
 1. Load the hive_backup.sql: mysql -u <username> -p < hive_backup.sql, enter your password
 2. Use the hive database: ``` use hive;```
 3. Create the Source_Matrix table:
