@@ -1,5 +1,4 @@
 *.class
-*.jar
 *.lock
 *.DS_Store
 
