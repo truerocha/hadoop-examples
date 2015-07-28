@@ -1,3 +1,5 @@
+#!/bin/bash
+
 typeset -r SYSEXECS=/bin
 typeset -r E_OK=0
 typeset -r E_ABORT=1
