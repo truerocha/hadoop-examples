@@ -108,7 +108,7 @@
  
          Log 'DEBUG' "function download_install_brew start"
  
-      if type -p typeactivator; then
+      if type -p activator; then
           echo "found activator executable" in $PATH
           _activator=activator
       elif [[ -n "$activator_HOME" ]] && [[ -x "$activator_HOME/local/bin/scala" ]];  then
