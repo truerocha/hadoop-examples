@@ -39,9 +39,9 @@ package object Application extends Controller {
       // Create an SQL query
       val cds = SQL("""
                     select
-                    split_str(sds.location, '/', 6) as "ENVIRONMENT"
-                  , split_str(sds.location, '/', 9) as "SOURCE_SYSTEM"
-                  , split_str(sds.location, '/', 7) as "SSU_VALUE"
+                    sds.location as "ENVIRONMENT"
+                  , sds.location as "SOURCE_SYSTEM"
+                  , sds.location as "SSU_VALUE"
                   , dbs.name as "HIVE_DATABASE"
                   , tbls.tbl_name as "HIVE_TABLE_NAME"
                   , tbls.owner as "HIVE_TABLE_OWNER"
@@ -128,9 +128,9 @@ package object Application extends Controller {
       // Create an SQL query
       val cds = SQL("""
                     select
-                    split_str(sds.location, '/', 6) as "ENVIRONMENT"
-                  , split_str(sds.location, '/', 9) as "SOURCE_SYSTEM"
-                  , split_str(sds.location, '/', 7) as "SSU_VALUE"
+                    sds.location as "ENVIRONMENT"
+                  , sds.location as "SOURCE_SYSTEM"
+                  , sds.location as "SSU_VALUE"
                   , dbs.name as "HIVE_DATABASE"
                   , tbls.tbl_name as "HIVE_TABLE_NAME"
                   , parts.part_name as "SOURCE_LINEAGE"
@@ -212,9 +212,9 @@ package object Application extends Controller {
       // Create an SQL query
       val cds = SQL("""
                     select
-                    split_str(sds.location, '/', 6) as "ENVIRONMENT"
-                  , split_str(sds.location, '/', 9) as "SOURCE_SYSTEM"
-                  , split_str(sds.location, '/', 7) as "SSU_VALUE"
+                    sds.location as "ENVIRONMENT"
+                  , sds.location as "SOURCE_SYSTEM"
+                  , sds.location as "SSU_VALUE"
                   , dbs.name as "HIVE_DATABASE"
                   , tbls.tbl_name as "HIVE_TABLE_NAME"
                   , cols.column_name as "HIVE_COLUMN_NAME"
