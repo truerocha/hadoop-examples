@@ -42,7 +42,7 @@ For convenience, you should add the Activator installation directory to your sys
 
 ###Setting Up the Environment Using Brew-java-scala-activator.sh
 
-1. Clone the respository using the following command :
+1. Clone the respository using the following command :-
  ```
  git clone https://github.com/servian/hadoop-examples.git
   ```
@@ -51,20 +51,20 @@ For convenience, you should add the Activator installation directory to your sys
  cd hadoop-examples/telstra/dashboard
  ```
 
-3. Change mode of the shell script Brew-java-scala-activator.sh, using the command: 
+3. Change mode of the shell script Brew-java-scala-activator.sh, using the command:- 
   ``` 
    chmod u+x Brew-java-scala-activator.sh
    ```
-4. Run the shell script Brew-java-scala-activator.sh to install brew, java, scala and activator using the following command:
+4. Run the shell script Brew-java-scala-activator.sh to install brew, java, scala and activator using the following command:-
   ``` 
   ./Brew-java-scala-activator.sh
   ```  
-5. Clean, compile and run the play-scala project using
+5. Clean, compile and run the play-scala project using:-
 	```
 	sbt clean && sbt compile && sbt run
 	```
 	
-6. Using your browser of choice and go to  
+6. Using your browser of choice and go to:-
 	```
 	   localhost:9000
 		localhost:9000/index				--> To View the Index Page
@@ -74,7 +74,7 @@ For convenience, you should add the Activator installation directory to your sys
 		localhost:9000/getColumns 			--> To View the Get Columns data from the rest service
 		localhost:9000/getSourceMatrix	--> To View the Get Source Matrix from the rest service
 	```	   
-7. The dashboard/conf/application.conf contains the mysql driver, url, username and password:
+7. The dashboard/conf/application.conf contains the mysql driver, url, username and password:-
 	``` db.hive.driver="com.mysql.jdbc.Driver"
 		 db.hive.url="jdbc:mysql://localhost:3306/hive"
 		 db.hive.user="<username>"
