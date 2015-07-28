@@ -34,7 +34,7 @@ For convenience, you should add the Activator installation directory to your sys
 
 4. Check that the activator command is available:
 
-    * From a shell, launch the ```activator -help``` command.
+    * From a shell, launch the `activator -help` command.
     * Create a new application with the activator command.
 
 
@@ -64,15 +64,16 @@ For convenience, you should add the Activator installation directory to your sys
 	```
 	
 6. Using your browser of choice and go to:-
-	```
-	  localhost:9000
-		localhost:9000/index				--> To View the Index Page
-		localhost:9000/dasboard				--> To View the Dashboard Page
-		localhost:9000/getTables			--> To View the Get Tables data from the rest service
-		localhost:9000/getSourceLineages --> To View the Get Source Lineages data from the rest service
-		localhost:9000/getColumns 			--> To View the Get Columns data from the rest service
-		localhost:9000/getSourceMatrix	--> To View the Get Source Matrix from the rest service
-	```	   
+  ```
+  localhost:9000
+  localhost:9000/index				--> To View the Index Page
+  localhost:9000/dasboard				--> To View the Dashboard Page
+  localhost:9000/getTables			--> To View the Get Tables data from the rest service
+  localhost:9000/getSourceLineages --> To View the Get Source Lineages data from the rest service
+  localhost:9000/getColumns 			--> To View the Get Columns data from the rest service
+  localhost:9000/getSourceMatrix	--> To View the Get Source Matrix from the rest service
+  ```	   
+
 7. The dashboard/conf/application.conf contains the mysql driver, url, username and password:-
 	``` 
      db.hive.driver="com.mysql.jdbc.Driver"
@@ -86,7 +87,7 @@ For convenience, you should add the Activator installation directory to your sys
 ###Setting up the MySQL Environment 
 
 1. Load the hive_backup.sql: `mysql -u <username> -p < hive_backup.sql`, enter your password
-2. Use the hive database: ``` use hive;```
+2. Use the hive database: `use hive;`
 3. Create the Source_Matrix table:
     ```sql
 		CREATE TABLE SOURCE_MATRIX(
@@ -109,6 +110,7 @@ For convenience, you should add the Activator installation directory to your sys
 		other_comments VARCHAR(1000)
 		);
 		```
+
 4. Insert Sample Data:
 		
 		```sql
