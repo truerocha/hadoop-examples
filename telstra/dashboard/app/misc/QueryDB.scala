@@ -14,20 +14,21 @@ import com.codahale.jerkson.Json._
 import dbscripts.QueryString
 
 class QueryDB {
- 
+ def manOf[T: Manifest](t: T): Manifest[T] = manifest[T]
  val qs = new QueryString
 def getTablesFromDB(searchString:String):String = {
     var json = Json.toJson(1)
     DB.withConnection("hive") { implicit c =>
 
-      val query = SQL(qs.GET_TABLES.replace("XXXXXX", searchString))
+      val query = SQL(qs.GET_TABLES.replace("XXXXXX",searchString))
        
       val resultSet = query().map(
         row => 
         Map(
-          "environment" -> row[String]("ENVIRONMENT"),
-          "source_system" -> row[String]("SOURCE_SYSTEM"),
-          "ssu_value" -> row[String]("SSU_VALUE"),
+          "path" -> row[String]("ENVIRONMENT"),
+          "environment" -> row[String]("ENVIRONMENT").split("/")(5).trim,
+          "source_system" -> row[String]("SOURCE_SYSTEM").split("/")(8).trim,
+          "ssu_value" -> row[String]("SSU_VALUE").split("/")(6).trim,
           "hive_database" -> row[String]("HIVE_DATABASE"),
           "hive_table_name" -> row[String]("HIVE_TABLE_NAME"),
           "hive_table_owner" -> row[String]("HIVE_TABLE_OWNER"),
@@ -35,8 +36,11 @@ def getTablesFromDB(searchString:String):String = {
         )
       )
 
+      val newResultSet = resultSet filter (x => ((x("path").split("/")(7) == "base")))
+      // val newResultSet2 = newResultSet1 filter (_("path").split("/")(8) == searchString)
+
       json = Json.toJson(
-        Json.obj("tables" -> resultSet))
+        Json.obj("tables" -> newResultSet))
       
     }
 
@@ -48,21 +52,25 @@ def getSourceLineagesFromDB(searchString:String):String = {
    var json = Json.toJson(1)
     DB.withConnection("hive") { implicit c =>
 
-      val query = SQL(qs.GET_SOURCE_LINEAGES.replace("XXXXXX", searchString))
+      val query = SQL(qs.GET_SOURCE_LINEAGES.replace("XXXXXX",searchString))
        
       val resultSet = query().map(
         row => 
         Map(
-          "environment" -> row[String]("ENVIRONMENT"),
-          "source_system" -> row[String]("SOURCE_SYSTEM"),
-          "ssu_value" -> row[String]("SSU_VALUE"),
+          "path" -> row[String]("ENVIRONMENT"),
+          "environment" -> row[String]("ENVIRONMENT").split("/")(5),
+          "source_system" -> row[String]("SOURCE_SYSTEM").split("/")(8),
+          "ssu_value" -> row[String]("SSU_VALUE").split("/")(6),
           "hive_database" -> row[String]("HIVE_DATABASE"),
           "hive_table_name" -> row[String]("HIVE_TABLE_NAME"),
           "source_lineage" -> row[String]("SOURCE_LINEAGE")
         )
       )
 
-      json = Json.toJson(Json.obj("source_lineages" -> resultSet))
+      val newResultSet = resultSet filter (x => ((x("path").split("/")(7) == "base")))
+      // val newResultSet2 = newResultSet1 filter (_("path").split("/")(8) == searchString)
+
+      json = Json.toJson(Json.obj("source_lineages" -> newResultSet))
       
     }
 
@@ -74,14 +82,15 @@ def getColumnsFromDB(searchString:String):String = {
    var json = Json.toJson(1)
     DB.withConnection("hive") { implicit c =>
 
-      val query = SQL(qs.GET_COLUMNS.replace("XXXXXX", searchString))
+      val query = SQL(qs.GET_COLUMNS.replace("XXXXXX",searchString))
        
       val resultSet = query().map(
         row => 
         Map(
-          "environment" -> row[String]("ENVIRONMENT"),
-          "source_system" -> row[String]("SOURCE_SYSTEM"),
-          "ssu_value" -> row[String]("SSU_VALUE"),
+          "path" -> row[String]("ENVIRONMENT"),
+          "environment" -> row[String]("ENVIRONMENT").split("/")(5),
+          "source_system" -> row[String]("SOURCE_SYSTEM").split("/")(8),
+          "ssu_value" -> row[String]("SSU_VALUE").split("/")(6),
           "hive_database" -> row[String]("HIVE_DATABASE"),
           "hive_table_name" -> row[String]("HIVE_TABLE_NAME"),
           "hive_column_name" -> row[String]("HIVE_COLUMN_NAME"),
@@ -89,12 +98,78 @@ def getColumnsFromDB(searchString:String):String = {
         )
       )
 
-      json = Json.toJson(Json.obj("columns" -> resultSet))
+      val newResultSet = resultSet filter (x => ((x("path").split("/")(7) == "base")))
+      // val newResultSet2 = newResultSet1 filter (_("path").split("/")(8) == searchString)
+
+      json = Json.toJson(Json.obj("columns" -> newResultSet))
       
     }
 
     var jsonString = Json.stringify(json)
+
    return jsonString
 }
+
+  def getSOMFromDB():String = {
+     var json = Json.toJson(1)
+      DB.withConnection("som") { implicit c =>
+
+        val query = SQL(qs.GET_SOM)
+         
+        val resultSet = query().map(
+          row => 
+          Map(
+            "user_story" -> row[String]("user_story"),
+            "kanban_state" -> row[String]("kanban_state"),
+            "big_data_owner" -> row[String]("big_data_owner"),
+            "app_id" -> row[String]("app_id"),
+            "source" -> row[String]("source"),
+            "data_description" -> row[String]("data_description"),
+            "architecture_domain" -> row[String]("architecture_domain"),
+            "use_cases" -> row[String]("use_cases"),
+            "contact_person_details" -> row[String]("contact_person_details"),
+            "data_layout" -> row[String]("data_layout"),
+            "customer_data" -> row[String]("customer_data"),
+            "financial_and_banking_information" -> row[String]("financial_and_banking_information"),
+            "sensitive_customer_information" -> row[String]("sensitive_customer_information"),
+            "telstra_identifiers_and_service_history" -> row[String]("telstra_identifiers_and_service_history"),
+            "credit_card_data" -> row[String]("credit_card_data"),
+            "financial_reporting_data" -> row[String]("financial_reporting_data"),
+            "privacy_data" -> row[String]("privacy_data"),
+            "regulatory_data" -> row[String]("regulatory_data"),
+            "is_any_high_sensitivity_data_captured" -> row[String]("is_any_high_sensitivity_data_captured"),
+            "nbn_confidential_information" -> row[String]("nbn_confidential_information"),
+            "nbn_compliant" -> row[String]("nbn_compliant"),
+            "is_this_data_ssu_ready" -> row[String]("is_this_data_ssu_ready"),
+            "ssu_remediation_method" -> row[String]("ssu_remediation_method"),
+            "historical_data_available1" -> row[String]("historical_data_available1"),
+            "historical_data_file_size1" -> row[String]("historical_data_file_size1"),
+            "frequency_of_delta_update1" -> row[String]("frequency_of_delta_update1"),
+            "data_latency" -> row[String]("data_latency"),
+            "subsequent_data_file_size_as_per_frequency" -> row[String]("subsequent_data_file_size_as_per_frequency"),
+            "sensitive_customer_information" -> row[String]("sensitive_customer_information"),
+            "format_it_comes_in" -> row[String]("format_it_comes_in"),
+            "data_sourcing_method" -> row[String]("data_sourcing_method"),
+            "host_name" -> row[String]("host_name"),
+            "host_ip" -> row[String]("host_ip"),
+            "port_number" -> row[String]("port_number"),
+            "network" -> row[String]("network"),
+            "database_instance" -> row[String]("database_instance"),
+            "file_location_on_server" -> row[String]("file_location_on_server"),
+            "api_data_sourcing_string" -> row[String]("api_data_sourcing_string"),
+            "other_comments" -> row[String]("other_comments"),
+            "firewall_status" -> row[String]("firewall_status"),
+            "tables_sourced" -> row[String]("tables_sourced")
+          )
+        )
+
+        json = Json.toJson(Json.obj("som" -> resultSet))
+        
+      }
+
+      var jsonString = Json.stringify(json)
+
+     return jsonString
+  }
   
 }

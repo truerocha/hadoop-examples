@@ -18,8 +18,7 @@ class QueryString {
                   on sds.sd_id = tbls.sd_id
                 where 
                   substr(sds.location, 1, 22) = 'hdfs://tdcdv2/data/tdc'
-                  and split_str(sds.location, '/', 8) = 'base'
-                  and split_str(sds.location, '/', 9) LIKE '%XXXXXX%'
+                  and sds.location LIKE '%XXXXXX%'
                 order by
                   1, 2, 3, 4
                     """
@@ -41,8 +40,7 @@ class QueryString {
                   on parts.tbl_id = tbls.tbl_id
                 where 
                   substr(sds.location, 1, 22) = 'hdfs://tdcdv2/data/tdc'
-                  and split_str(sds.location, '/', 8) = 'base'
-                  and split_str(sds.location, '/', 9) LIKE '%XXXXXX%'
+                  and sds.location LIKE '%XXXXXX%'
                 order by
                   1, 2, 3, 4, 5, 6
                     """
@@ -65,11 +63,11 @@ class QueryString {
                   on cols.cd_id = sds.cd_id
                 where 
                   substr(sds.location, 1, 22) = 'hdfs://tdcdv2/data/tdc'
-                  and split_str(sds.location, '/', 8) = 'base'
-                  and split_str(sds.location, '/', 9) LIKE '%XXXXXX%'
+                  and sds.location LIKE '%XXXXXX%'
                 order by
                   1, 2, 3, 4, 5, cols.integer_idx
                     """
 
+  var GET_SOM="SELECT * FROM SOURCE_OPTION_MATRIX_V4"
   
 }

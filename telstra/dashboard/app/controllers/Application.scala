@@ -50,27 +50,7 @@ package object Application extends Controller {
 
   def getSourceMatrix = Action {
 
-    var json = Json.toJson(1)
-    DB.withConnection("hive") { implicit c =>
-
-      val cds = SQL("""
-                    select * from source_matrix limit 1
-                    """)
-       
-      val datas = cds().map(
-        row => "data" -> row
-      ).toList
-
-      val datasList = datas.mkString(",")
-
-      json = Json.toJson(
-      Map(
-          "datas" -> Json.toJson(datasList)
-        ))
-      
-    }
-
-    var jsonString = Json.stringify(json)
+    var jsonString = qdb.getSOMFromDB()
     Ok(jsonString)
   }
 
