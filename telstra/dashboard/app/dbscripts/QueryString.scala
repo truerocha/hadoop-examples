@@ -22,7 +22,7 @@ class QueryString {
                   
                 order by
                   1, 2, 3, 4
-                limit 10
+                limit 1
                     """
 
   var GET_SOURCE_LINEAGES="""
