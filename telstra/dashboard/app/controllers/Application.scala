@@ -28,21 +28,12 @@ package object Application extends Controller {
   }
 
   def getTables = Action {
-    // val i = new ScalaHiveJDBC()
-    // val jsonString = i.getData("org.apache.hive.jdbc.HiveDriver","jdbc:hive2://localhost:10000","mapr", "mapr","select * from default.ingestion")
 
-    // access "orders" database instead of "default"
-   
     var json = Json.toJson(1)
     DB.withConnection("hive") { implicit c =>
-      // val result: Boolean = SQL("select * from cds limit 10").execute()
-      // val json = Json.toJson(result)
-      // val jsonString = Json.stringify(json)
 
-      // Create an SQL query
       val cds = SQL(qs.GET_TABLES)
        
-      
       val environments = cds().map(
         row => "ENVIRONMENT" -> row[String]("ENVIRONMENT")
       ).toList
@@ -97,17 +88,10 @@ package object Application extends Controller {
   }
 
   def getSourceLineage = Action {
-    // val i = new ScalaHiveJDBC()
-    // val jsonString = i.getData("org.apache.hive.jdbc.HiveDriver","jdbc:hive2://localhost:10000","mapr", "mapr","select * from default.ingestion")
 
-    // access "orders" database instead of "default"
     var json = Json.toJson(1)
     DB.withConnection("hive") { implicit c =>
-      // val result: Boolean = SQL("select * from cds limit 10").execute()
-      // val json = Json.toJson(result)
-      // val jsonString = Json.stringify(json)
 
-      // Create an SQL query
       val cds = SQL(qs.GET_SOURCE_LINEAGES)
        
       
@@ -159,17 +143,10 @@ package object Application extends Controller {
   }
 
   def getColumns = Action {
-    // val i = new ScalaHiveJDBC()
-    // val jsonString = i.getData("org.apache.hive.jdbc.HiveDriver","jdbc:hive2://localhost:10000","mapr", "mapr","select * from default.ingestion")
 
-    // access "orders" database instead of "default"
     var json = Json.toJson(1)
     DB.withConnection("hive") { implicit c =>
-      // val result: Boolean = SQL("select * from cds limit 10").execute()
-      // val json = Json.toJson(result)
-      // val jsonString = Json.stringify(json)
 
-      // Create an SQL query
       val cds = SQL(qs.GET_COLUMNS)
        
       
@@ -227,17 +204,10 @@ package object Application extends Controller {
   }
 
   def getSourceMatrix = Action {
-    // val i = new ScalaHiveJDBC()
-    // val jsonString = i.getData("org.apache.hive.jdbc.HiveDriver","jdbc:hive2://localhost:10000","mapr", "mapr","select * from default.ingestion")
 
-    // access "orders" database instead of "default"
     var json = Json.toJson(1)
     DB.withConnection("hive") { implicit c =>
-      // val result: Boolean = SQL("select * from cds limit 10").execute()
-      // val json = Json.toJson(result)
-      // val jsonString = Json.stringify(json)
 
-      // Create an SQL query
       val cds = SQL("""
                     select * from source_matrix limit 1
                     """)
@@ -258,62 +228,6 @@ package object Application extends Controller {
     var jsonString = Json.stringify(json)
     Ok(jsonString)
   }
-  // def ingestion = Action {
-  //   // val i = new ScalaHiveJDBC()
-  //   // val jsonString = i.getData("org.apache.hive.jdbc.HiveDriver","jdbc:hive2://localhost:10000","mapr", "mapr","select * from default.ingestion")
-
-  //   // access "orders" database instead of "default"
-    
-  //   DB.withConnection("hive") { implicit c =>
-  //     // val result: Boolean = SQL("select * from cds limit 10").execute()
-  //     // val json = Json.toJson(result)
-  //     // val jsonString = Json.stringify(json)
-
-  //     // Create an SQL query
-  //     val cds = SQL("select * from cds limit 10")
-       
-  //     // Transform the resulting Stream[Row] as a List[(String,String)]
-  //     val cdsList = cds().toList
-  //     // println(jsonString)
-  //     cdsList.foreach { println }
-  //   }
- 
-  //   Ok("Test")
-  // }
 
 } 
-/*  def index = Action {
- 
-    import play.api.db._
- 
-    val list = MutableList[CharacterSet]()
- 
-    DB.withConnection { conn =>
-      val stm = conn.createStatement()
-      val res = stm.executeQuery("""select * from emp""")
-      while (res.next()) {
-        list.+=(CharacterSet(res.getString(1), res.getString(2)))
-      }
-    }
- 
-    Ok(views.html.index("helloworld"))
-  }
 
-<<<<<<< HEAD
-
-  def landing = Action {
-    Ok(views.html.landing())
-  }
-
-  def dashboard = Action {
-    Ok(views.html.dashboard())
-  }
-
-  def dashSourceSystem = Action {
-    Ok(views.html.dashboard_source_system())
-  }
-
-=======
->>>>>>> 58188218a2101508381b11daeb2c0490cc5225fe
-}
-*/
