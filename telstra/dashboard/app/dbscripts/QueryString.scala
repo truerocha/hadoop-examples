@@ -19,10 +19,9 @@ class QueryString {
                 where 
                   substr(sds.location, 1, 22) = 'hdfs://tdcdv2/data/tdc'
                   and split_str(sds.location, '/', 8) = 'base'
-                  
+                  and split_str(sds.location, '/', 9) LIKE '%XXXXXX%'
                 order by
                   1, 2, 3, 4
-                limit 1
                     """
 
   var GET_SOURCE_LINEAGES="""
@@ -43,10 +42,9 @@ class QueryString {
                 where 
                   substr(sds.location, 1, 22) = 'hdfs://tdcdv2/data/tdc'
                   and split_str(sds.location, '/', 8) = 'base'
-                  and split_str(sds.location, '/', 9) LIKE '%ivecha%'
+                  and split_str(sds.location, '/', 9) LIKE '%XXXXXX%'
                 order by
                   1, 2, 3, 4, 5, 6
-                  limit 1
                     """
 
   var GET_COLUMNS="""
@@ -68,10 +66,9 @@ class QueryString {
                 where 
                   substr(sds.location, 1, 22) = 'hdfs://tdcdv2/data/tdc'
                   and split_str(sds.location, '/', 8) = 'base'
-                  and split_str(sds.location, '/', 9) LIKE '%ivecha%'
+                  and split_str(sds.location, '/', 9) LIKE '%XXXXXX%'
                 order by
                   1, 2, 3, 4, 5, cols.integer_idx
-                limit 1
                     """
 
   

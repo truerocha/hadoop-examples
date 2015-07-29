@@ -1,4 +1,4 @@
-package dbHive
+package misc
 
 import java.sql.DriverManager
 import java.sql.Connection
