@@ -35,51 +35,61 @@ package object Application extends Controller {
       val cds = SQL(qs.GET_TABLES)
        
       val environments = cds().map(
-        row => "ENVIRONMENT" -> row[String]("ENVIRONMENT")
+        row => 
+        Map(
+          "ENVIRONMENT" -> row[String]("ENVIRONMENT"),
+          "SOURCE_SYSTEM" -> row[String]("SOURCE_SYSTEM"),
+          "SSU_VALUE" -> row[String]("SSU_VALUE"),
+          "HIVE_DATABASE" -> row[String]("HIVE_DATABASE"),
+          "HIVE_TABLE_NAME" -> row[String]("HIVE_TABLE_NAME"),
+          "HIVE_TABLE_OWNER" -> row[String]("HIVE_TABLE_OWNER"),
+          "HDFS_PATH" -> row[String]("HDFS_PATH")
+        )
       ).toList
 
-      val source_systems = cds().map(
-        row => "SOURCE_SYSTEM" -> row[String]("SOURCE_SYSTEM")
-      ).toList
+      // val source_systems = cds().map(
+      //   row => "SOURCE_SYSTEM" -> row[String]("SOURCE_SYSTEM")
+      // ).toList
 
-      val ssu_value = cds().map(
-        row => "SSU_VALUE" -> row[String]("SSU_VALUE")
-      ).toList
+      // val ssu_value = cds().map(
+      //   row => "SSU_VALUE" -> row[String]("SSU_VALUE")
+      // ).toList
 
-      val hive_databases = cds().map(
-        row => "HIVE_DATABASE" -> row[String]("HIVE_DATABASE")
-      ).toList
+      // val hive_databases = cds().map(
+      //   row => "HIVE_DATABASE" -> row[String]("HIVE_DATABASE")
+      // ).toList
 
-      val hive_table_names = cds().map(
-        row => "HIVE_TABLE_NAME" -> row[String]("HIVE_TABLE_NAME")
-      ).toList
+      // val hive_table_names = cds().map(
+      //   row => "HIVE_TABLE_NAME" -> row[String]("HIVE_TABLE_NAME")
+      // ).toList
 
-      val hive_table_owners = cds().map(
-        row => "HIVE_TABLE_OWNER" -> row[String]("HIVE_TABLE_OWNER")
-      ).toList
+      // val hive_table_owners = cds().map(
+      //   row => "HIVE_TABLE_OWNER" -> row[String]("HIVE_TABLE_OWNER")
+      // ).toList
 
-      val hdfs_paths = cds().map(
-        row => "HDFS_PATH" -> row[String]("HDFS_PATH")
-      ).toList
+      // val hdfs_paths = cds().map(
+      //   row => "HDFS_PATH" -> row[String]("HDFS_PATH")
+      // ).toList
 
-      val environmentsList = environments.mkString(",")
-      val source_systemsList = source_systems.mkString(",")
-      val ssu_valueList = ssu_value.mkString(",")
-      val hive_databasesList = hive_databases.mkString(",")
-      val hive_table_namesList = hive_table_names.mkString(",")
-      val hive_table_ownersList = hive_table_owners.mkString(",")
-      val hdfs_pathsList = hdfs_paths.mkString(",")
+      // val environmentsList = environments.mkString(",")
+      // val source_systemsList = source_systems.mkString(",")
+      // val ssu_valueList = ssu_value.mkString(",")
+      // val hive_databasesList = hive_databases.mkString(",")
+      // val hive_table_namesList = hive_table_names.mkString(",")
+      // val hive_table_ownersList = hive_table_owners.mkString(",")
+      // val hdfs_pathsList = hdfs_paths.mkString(",")
 
-      json = Json.toJson(
-      Map(
-          "environments" -> Json.toJson(environmentsList),
-          "source_systems" -> Json.toJson(source_systemsList),
-          "ssu_value" -> Json.toJson(ssu_valueList),
-          "hive_databases" -> Json.toJson(hive_databasesList),
-          "hive_table_names" -> Json.toJson(hive_table_namesList),
-          "hive_table_owners" -> Json.toJson(hive_table_ownersList),
-          "hdfs_paths" -> Json.toJson(hdfs_pathsList)
-        ))
+      json = Json.toJson(environments
+      // Map(
+      //     "environments" -> Json.toJson(environmentsList),
+      //     "source_systems" -> Json.toJson(source_systemsList),
+      //     "ssu_value" -> Json.toJson(ssu_valueList),
+      //     "hive_databases" -> Json.toJson(hive_databasesList),
+      //     "hive_table_names" -> Json.toJson(hive_table_namesList),
+      //     "hive_table_owners" -> Json.toJson(hive_table_ownersList),
+      //     "hdfs_paths" -> Json.toJson(hdfs_pathsList)
+      //   )
+      )
       
     }
 

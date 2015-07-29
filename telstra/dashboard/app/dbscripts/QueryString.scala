@@ -19,10 +19,10 @@ class QueryString {
                 where 
                   substr(sds.location, 1, 22) = 'hdfs://tdcdv2/data/tdc'
                   and split_str(sds.location, '/', 8) = 'base'
-                  and split_str(sds.location, '/', 9) LIKE '%ivecha%'
+                  
                 order by
                   1, 2, 3, 4
-                limit 1
+                limit 10
                     """
 
   var GET_SOURCE_LINEAGES="""
