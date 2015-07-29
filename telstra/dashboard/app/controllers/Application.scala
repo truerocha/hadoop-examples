@@ -12,9 +12,11 @@ import play.api.libs.functional.syntax._
 import play.api.db._
 import anorm._
 import com.codahale.jerkson.Json._
+import dbscripts.QueryString
 
 package object Application extends Controller {
-
+    val qs = new QueryString
+    
     def index = Action {
     Ok(views.html.index("Your new application is ready."))
   }
@@ -30,6 +32,7 @@ package object Application extends Controller {
     // val jsonString = i.getData("org.apache.hive.jdbc.HiveDriver","jdbc:hive2://localhost:10000","mapr", "mapr","select * from default.ingestion")
 
     // access "orders" database instead of "default"
+   
     var json = Json.toJson(1)
     DB.withConnection("hive") { implicit c =>
       // val result: Boolean = SQL("select * from cds limit 10").execute()
@@ -37,28 +40,7 @@ package object Application extends Controller {
       // val jsonString = Json.stringify(json)
 
       // Create an SQL query
-      val cds = SQL("""
-                    select
-                    sds.location as "ENVIRONMENT"
-                  , sds.location as "SOURCE_SYSTEM"
-                  , sds.location as "SSU_VALUE"
-                  , dbs.name as "HIVE_DATABASE"
-                  , tbls.tbl_name as "HIVE_TABLE_NAME"
-                  , tbls.owner as "HIVE_TABLE_OWNER"
-                  , sds.location as "HDFS_PATH"
-                from hive.dbs as dbs
-                inner join hive.tbls as tbls
-                  on tbls.db_id = dbs.db_id
-                inner join hive.sds as sds
-                  on sds.sd_id = tbls.sd_id
-                where 
-                  substr(sds.location, 1, 22) = 'hdfs://tdcdv2/data/tdc'
-                  and split_str(sds.location, '/', 8) = 'base'
-                  and split_str(sds.location, '/', 9) LIKE '%ivecha%'
-                order by
-                  1, 2, 3, 4
-                limit 1
-                    """)
+      val cds = SQL(qs.GET_TABLES)
        
       
       val environments = cds().map(
@@ -126,29 +108,7 @@ package object Application extends Controller {
       // val jsonString = Json.stringify(json)
 
       // Create an SQL query
-      val cds = SQL("""
-                    select
-                    sds.location as "ENVIRONMENT"
-                  , sds.location as "SOURCE_SYSTEM"
-                  , sds.location as "SSU_VALUE"
-                  , dbs.name as "HIVE_DATABASE"
-                  , tbls.tbl_name as "HIVE_TABLE_NAME"
-                  , parts.part_name as "SOURCE_LINEAGE"
-                from dbs
-                inner join tbls
-                  on tbls.db_id = dbs.db_id
-                inner join sds
-                  on sds.sd_id = tbls.sd_id
-                inner join partitions parts
-                  on parts.tbl_id = tbls.tbl_id
-                where 
-                  substr(sds.location, 1, 22) = 'hdfs://tdcdv2/data/tdc'
-                  and split_str(sds.location, '/', 8) = 'base'
-                  and split_str(sds.location, '/', 9) LIKE '%ivecha%'
-                order by
-                  1, 2, 3, 4, 5, 6
-                  limit 1
-                    """)
+      val cds = SQL(qs.GET_SOURCE_LINEAGES)
        
       
       val environments = cds().map(
@@ -210,30 +170,7 @@ package object Application extends Controller {
       // val jsonString = Json.stringify(json)
 
       // Create an SQL query
-      val cds = SQL("""
-                    select
-                    sds.location as "ENVIRONMENT"
-                  , sds.location as "SOURCE_SYSTEM"
-                  , sds.location as "SSU_VALUE"
-                  , dbs.name as "HIVE_DATABASE"
-                  , tbls.tbl_name as "HIVE_TABLE_NAME"
-                  , cols.column_name as "HIVE_COLUMN_NAME"
-                  , cols.type_name as "HIVE_COLUMN_DATA_TYPE"
-                from dbs
-                inner join tbls
-                  on tbls.db_id = dbs.db_id
-                inner join sds
-                  on sds.sd_id = tbls.sd_id
-                inner join columns_v2 cols
-                  on cols.cd_id = sds.cd_id
-                where 
-                  substr(sds.location, 1, 22) = 'hdfs://tdcdv2/data/tdc'
-                  and split_str(sds.location, '/', 8) = 'base'
-                  and split_str(sds.location, '/', 9) LIKE '%ivecha%'
-                order by
-                  1, 2, 3, 4, 5, cols.integer_idx
-                limit 1
-                    """)
+      val cds = SQL(qs.GET_COLUMNS)
        
       
       val environments = cds().map(
