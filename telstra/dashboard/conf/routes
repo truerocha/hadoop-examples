@@ -29,4 +29,4 @@ GET     /getColumns/:searchString               controllers.Application.getColum
 
 
 # get Source Matrix Page
-GET     /getSourceMatrix               			controllers.Application.getSourceMatrix
+GET     /getSourceMatrix/:searchString                 			controllers.Application.getSourceMatrix(searchString:String)

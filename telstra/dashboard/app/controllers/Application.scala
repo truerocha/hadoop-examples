@@ -48,9 +48,9 @@ package object Application extends Controller {
     Ok(jsonString)
   }
 
-  def getSourceMatrix = Action {
+  def getSourceMatrix(searchString:String) = Action {
 
-    var jsonString = qdb.getSOMFromDB()
+    var jsonString = qdb.getSOMFromDB(searchString)
     Ok(jsonString)
   }
 

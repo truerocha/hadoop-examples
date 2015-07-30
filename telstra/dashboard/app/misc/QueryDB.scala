@@ -110,11 +110,11 @@ def getColumnsFromDB(searchString:String):String = {
    return jsonString
 }
 
-  def getSOMFromDB():String = {
+  def getSOMFromDB(searchString:String):String = {
      var json = Json.toJson(1)
       DB.withConnection("som") { implicit c =>
 
-        val query = SQL(qs.GET_SOM)
+        val query = SQL(qs.GET_SOM.replace("XXXXXX",searchString))
          
         val resultSet = query().map(
           row => 

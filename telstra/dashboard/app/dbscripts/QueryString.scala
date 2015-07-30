@@ -68,6 +68,6 @@ class QueryString {
                   1, 2, 3, 4, 5, cols.integer_idx
                     """
 
-  var GET_SOM="SELECT * FROM SOURCE_OPTION_MATRIX_V4"
+  var GET_SOM="SELECT * FROM SOURCE_OPTION_MATRIX_V4 WHERE source LIKE '%XXXXXX%'"
   
 }
