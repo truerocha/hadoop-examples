@@ -18,14 +18,14 @@ package object Application extends Controller {
     
     val qdb = new QueryDB
     
-    def index = Action {
+  def index = Action {
     Ok(views.html.index("Your new application is ready."))
   }
 
   def dashboard = Action {
 
-  
   Ok(views.html.dashboard("Hello World"))
+  
   }
 
   def getTables(searchString:String) = Action {

@@ -187,6 +187,30 @@ function saveTechnicalDetails(){
   $( "#otherCommentsVal" ).html( $('#lblotherComments').val() );
 }
 
+function editTrackingandDS(){
+  $("#editTrackingandDS").hide();
+  $("#saveTrackingandDS").show();
+  $("#trackingandDSEditView").show();
+  $("#trackingandDSReadView").hide();
+
+  $("#lblfireWallStatus").val($( "#fireWallStatus" ).text());
+  $("#lbltablesSourced").val($( "#tablesSourced" ).text());
+
+}
+
+function saveTrackingandDS(){
+  //Manage Buttons Behaviour
+  $("#saveTrackingandDS").hide();
+  $("#editTrackingandDS").show();
+  $("#trackingandDSReadView").show();
+  $("#trackingandDSEditView").hide();
+
+  // Load Internal Data into Form
+  $( "#fireWallStatus" ).html( $('#lblfireWallStatus').val() );
+  $( "#tablesSourced" ).html( $('#lbltablesSourced').val() );
+
+}
+
 $(document).ready(function() {
 
       // $.getJSON( "getColumns", function( data ) {
@@ -217,39 +241,71 @@ $(document).ready(function() {
       // });
 
       $.getJSON( "getSourceMatrix", function( data ) {
-          var arr = data["datas"].replace(")", "").split(":");
-          console.log(arr);
+          
+          // Load application metadata, data
+      $( "#userStoryVal" ).html( " US83" );
+      $( "#kanbanStateVal" ).html( " In Production" );
+      $( "#bigDataOwnerVal" ).html( " Oliver Ferdinando" );
+      $( "#appIDVal" ).html( " APP-6638" );
+      $( "#sourceVal" ).html( " LIVECHAT 1.0" );
+      $( "#dataDescriptionVal" ).html( " Collaboration tool between Telstra Business (TB) end customers and TB CSRs to help customers with sales, service, and support, without calling in." );
+      $( "#architectureDomainVal" ).html( " ONLINE" );
+      $( "#useCaseVal" ).html( " Customer - Complaints;'Customer - CEL'" );
+      $( "#contactDetailsVal" ).html( " Andy Chan (Technical Contact)" );
+      $( "#dataLayoutVal" ).html( " Text based" );
 
-          $( "#userStoryVal" ).html( arr[1].split("as")[0] );
-          $( "#bigDataOwnerVal" ).html( arr[2].split("as")[0] );
+      // Sensitivity Indicators Edit/ Save Buttons
+      $("#saveSensitivityIndicators").hide();
+      $("#sensitivityIndicatorsEditView").hide();
 
-          $( "#appIDVal" ).html( arr[3].split("as")[0] );
-          // $( "#sourceVal" ).html(arr[2].split("as")[0] );
-          $( "#dataDescriptionVal" ).html( arr[5].split("as")[0] );
-          $( "#architectureDomainVal" ).html( arr[6].split("as")[0] );
-          $( "#useCaseVal" ).html( arr[7].split("as")[0]);
-          $( "#contactDetailsVal" ).html( arr[8].split("as")[0] );
-          $( "#dataLayoutVal" ).html( arr[9].split("as")[0] );
+      // Load sensitivity indicators, data
+      $( "#customerDataVal" ).html( " Y" );
+      $( "#financialAndBankInfoVal" ).html( " N" );
+      $( "#sensitiveCustomerInfoVal" ).html( " Y" );
+      $( "#telstraIdentifierVal" ).html( " Y" );
+      $( "#creditCardDataVal" ).html( " N" );
+      $( "#financialReportingDataVal" ).html( " N" );
+      $( "#privacyDataVal" ).html( " Y (PII 118,18,7)" );
+      $( "#regulatoryDataVal" ).html( " N" );
+      $( "#isSensitiveDataVal" ).html( " Y" );
+      $( "#nbnConfidentialInfoVal" ).html( " N" );
+      $( "#nbnCompiantVal" ).html( " N/ A" );
 
-              // Load Technical Details, data
-          $( "#hostNameVal" ).html( arr[10].split("as")[0] );
-          $( "#hostIPVal" ).html( arr[11].split("as")[0]  );
-          $( "#portNumberVal" ).html( arr[1].split("as")[0] );
-          $( "#networkVal" ).html( arr[13].split("as")[0]  );
-          $( "#dbInstanceVal" ).html( arr[14].split("as")[0] );
-          $( "#fileLocVal" ).html( arr[15].split("as")[0] + arr[16].split("as")[0]  );
-          $( "#apiDSVal" ).html( arr[17].split("as")[0]  );
-          $( "#otherCommentsVal" ).html( arr[18].split("as")[0]   );
+      // SSU Edit/ Save Buttons
+      $("#saveSSU").hide();
+      $("#sSUEditView").hide();
+
+      // Load SSU data
+      $( "#isSSUReadyVal" ).html( " Y - Retail Only" );
+      $( "#sSURemediationVal" ).html( " N/A" );
+
+      // Load Technical Details, data
+      $( "#histDataAvailVal" ).html( " 12 Months" );
+      $( "#histDataSizeVal" ).html( " 5GB" );
+      $( "#freqDeltaVal" ).html( " Daily" );
+      $( "#timeDataAvailVal" ).html( " Monday to Friday" );
+      $( "#dataLatencyVal" ).html( " One Day" );
+      $( "#subDataSizeVal" ).html( " ~50mb compressed" );
+      $( "#formatVal" ).html( " dmp.gz" );
+      $( "#dataSourcingVal" ).html( " SFTP Push" );
+      $( "#hostNameVal" ).html( " transbp.wg.dir.telstra.com" );
+      $( "#hostIPVal" ).html( " 144.136.107.191" );
+      $( "#portNumberVal" ).html( " 22" );
+      $( "#networkVal" ).html( " EDN" );
+      $( "#dbInstanceVal" ).html( " Oracle Table" );
+      $( "#fileLocVal" ).html( " /bigdata" );
+      $( "#apiDSVal" ).html( " N/A" );
+      $( "#otherCommentsVal" ).html( "  User account to connect to UCSv1: livechat-sftp, Big Data (UCS) SFTP IP address: 10.245.123.29, UCS landing directory: /data/tdc/prd/ret/land/livechat, Delimiters used = <del> for delimiter and <ret> for new record" );
 
       });
-      $.getJSON( "getColumns", function( data ) {
+      // $.getJSON( "getColumns", function( data ) {
          
-          // console.log(data);
+      //     // console.log(data);
 
-          $( "#sourceVal" ).html( data["source_systems"].replace(")", "").split(",")[1].split("/")[8] );
-          $( "#sSURemediationVal" ).html( data["ssu_value"].replace(")", "").split(",")[1].split("/")[6] );
-          $( "#fileLocVal" ).html( data["hdfs_paths"].replace(")", "").split(",")[1] );
-      });
+      //     $( "#sourceVal" ).html( data["source_systems"].replace(")", "").split(",")[1].split("/")[8] );
+      //     $( "#sSURemediationVal" ).html( data["ssu_value"].replace(")", "").split(",")[1].split("/")[6] );
+      //     $( "#fileLocVal" ).html( data["hdfs_paths"].replace(")", "").split(",")[1] );
+      // });
 
 
       // Search Results
@@ -260,9 +316,9 @@ $(document).ready(function() {
       $("#internalEditView").hide();
 
       // Load internal data
-      // $( "#userStoryVal" ).html( " US83" );
+      $( "#userStoryVal" ).html( " US83" );
       $( "#kanbanStateVal" ).html( " In Production" );
-      // $( "#bigDataOwnerVal" ).html( " Oliver Ferdinando" );
+      $( "#bigDataOwnerVal" ).html( " Oliver Ferdinando" );
 
       // Application MetaData Edit/ Save Buttons
       $("#saveAppMetadata").hide();
@@ -324,18 +380,3 @@ $(document).ready(function() {
       // $( "#apiDSVal" ).html( " N/A" );
       // $( "#otherCommentsVal" ).html( "  User account to connect to UCSv1: livechat-sftp, Big Data (UCS) SFTP IP address: 10.245.123.29, UCS landing directory: /data/tdc/prd/ret/land/livechat, Delimiters used = <del> for delimiter and <ret> for new record" );
 });
-
-// $.getJSON( "data/data.json", function( data ) {
-//   $( "#result" ).html( JSON.stringify(data) );
-//   	console.log(data);
-//   	ddReloadSourceSystems('#sourceSystems',data.jobs_info);
-// });
-
-// function ddReloadSourceSystems(ddTag,data){
-// 	$.each(data, function (i, item) {
-// 	    $(ddTag).empty().append($('<option>', { 
-// 	        value: item["User story"],
-// 	        text : item["Source"]
-// 	    }));
-// 	});
-// }
