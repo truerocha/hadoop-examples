@@ -32,3 +32,7 @@ GET     /getColumns/:searchString               controllers.Application.getColum
 GET     /getSourceMatrix/:searchString                 			controllers.Application.getSourceMatrix(searchString:String)
 
 GET 	/updateInternal/:q/:us/:kb/:bdo 			controllers.Application.updateInternal(q:String,us:String,kb:String,bdo:String)
+
+GET 	/updateAppMetadata/:q/:appid/:dd/:ad/:uc/:cpd/:dl 			controllers.Application.updateAppMetadata(q:String,appid:String,dd:String,ad:String,uc:String,cpd:String,dl:String) 
+
+GET 	/updateSensitivityIndicators/:q/:cd/:fabi/:sci/:tiash/:ccd/:frd/:pd/:rd/:iahsdc/:nci/:nc 			controllers.Application.updateSensitivityIndicators(q:String,cd:String,fabi:String,sci:String,tiash:String,ccd:String,frd:String,pd:String,rd:String,iahsdc:String,nci:String,nc:String)  

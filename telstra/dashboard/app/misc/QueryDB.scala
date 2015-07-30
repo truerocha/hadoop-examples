@@ -176,7 +176,72 @@ def getColumnsFromDB(searchString:String):String = {
        
        var json = Json.toJson(1)
         DB.withConnection("som") { implicit c =>
-          val query = SQL(qs.UPDATE_INTERNAL.replace("AAAAAA",us).replace("BBBBBB",kb).replace("CCCCCC",bdo).replace("QQQQQQ",q)).executeUpdate()
+          val query = SQL(
+            qs.
+            UPDATE_INTERNAL.
+            replace("AAAAAA",us).
+            replace("BBBBBB",kb).
+            replace("CCCCCC",bdo).
+            replace("QQQQQQ",q)).
+            executeUpdate()
+          println(query)
+        }
+
+       return "true"
+    }
+
+    def updateApplicationMetadataDB(
+      q:String,
+      appid:String,
+      dd:String,
+      ad:String,
+      uc:String,
+      cpd:String,
+      dl:String):String = {
+       
+       var json = Json.toJson(1)
+        DB.withConnection("som") { implicit c =>
+          val query = SQL(
+            qs.
+            UPDATE_APPLICATION_METADATA.
+            replace("AAAAAA",appid).
+            replace("BBBBBB",dd).
+            replace("CCCCCC",ad).
+            replace("DDDDDD",uc).
+            replace("EEEEEE",cpd).
+            replace("FFFFFF",dl).
+            replace("QQQQQQ",q)).
+            executeUpdate()
+          println(query)
+        }
+
+       return "true"
+    }
+
+  def updateSensitivityIndicatorsDB(
+      q:String,cd:String,fabi:String,sci:String,
+      tiash:String,ccd:String,frd:String,pd:String,
+      rd:String,iahsdc:String,nci:String,nc:String
+      ):String = {
+       
+       var json = Json.toJson(1)
+        DB.withConnection("som") { implicit c =>
+          val query = SQL(
+            qs.
+            UPDATE_SENSITIVITY_INDICATORS.
+            replace("AAAAAA",cd).
+            replace("BBBBBB",fabi).
+            replace("CCCCCC",sci).
+            replace("DDDDDD",tiash).
+            replace("EEEEEE",ccd).
+            replace("FFFFFF",frd).
+            replace("GGGGGG",pd).
+            replace("HHHHHH",rd).
+            replace("IIIIII",iahsdc).
+            replace("JJJJJJ",nci).
+            replace("KKKKKK",nc).
+            replace("QQQQQQ",q)).
+            executeUpdate()
           println(query)
         }
 

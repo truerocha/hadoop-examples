@@ -77,5 +77,62 @@ class QueryString {
                           big_data_owner='CCCCCC'
                           WHERE source='QQQQQQ'
                       """
+
+  var UPDATE_APPLICATION_METADATA=""" UPDATE SOURCE_OPTION_MATRIX_V4
+                                      SET 
+                                      app_id='AAAAAA', 
+                                      data_description='BBBBBB',
+                                      architecture_domain='CCCCCC', 
+                                      use_cases='DDDDDD', 
+                                      contact_person_details='EEEEEE',
+                                      data_layout='FFFFFF'
+                                      WHERE source='QQQQQQ'
+                                  """
   
+  var UPDATE_SENSITIVITY_INDICATORS=""" UPDATE SOURCE_OPTION_MATRIX_V4
+                                      SET 
+                                      customer_data='AAAAAA', 
+                                      financial_and_banking_information='BBBBBB',
+                                      sensitive_customer_information='CCCCCC', 
+                                      telstra_identifiers_and_service_history='DDDDDD', 
+                                      credit_card_data='EEEEEE',
+                                      financial_reporting_data='FFFFFF',
+                                      privacy_data='GGGGGG',
+                                      regulatory_data='HHHHHH', 
+                                      is_any_high_sensitivity_data_captured='IIIIII', 
+                                      nbn_confidential_information='JJJJJJ',
+                                      nbn_compliant='KKKKKK'
+                                      WHERE source='QQQQQQ'
+                                  """
+
+  var UPDATE_SSU=""" UPDATE SOURCE_OPTION_MATRIX_V4
+                          SET 
+                          is_this_data_ssu_ready='AAAAAA', 
+                          ssu_remediation_method='BBBBBB'
+                          WHERE source='QQQQQQ'
+                      """
+
+  var UPDATE_TECH_DETAILS=""" UPDATE SOURCE_OPTION_MATRIX_V4
+                                      SET 
+                                      customer_data='AAAAAA', 
+                                      financial_and_banking_information='BBBBBB',
+                                      sensitive_customer_information='CCCCCC', 
+                                      telstra_identifiers_and_service_history='DDDDDD', 
+                                      credit_card_data='EEEEEE',
+                                      financial_reporting_data='FFFFFF',
+                                      privacy_data='GGGGGG',
+                                      regulatory_data='HHHHHH', 
+                                      is_any_high_sensitivity_data_captured='IIIIII', 
+                                      nbn_confidential_information='JJJJJJ',
+                                      nbn_compliant='KKKKKK'
+                                      WHERE source='QQQQQQ'
+                                  """
+
+  var UPDATE_TRACKING_AND_DS=""" UPDATE SOURCE_OPTION_MATRIX_V4
+                          SET 
+                          firewall_status='AAAAAA', 
+                          tables_sourced='BBBBBB'
+                          WHERE source='QQQQQQ'
+                      """
+
 }
