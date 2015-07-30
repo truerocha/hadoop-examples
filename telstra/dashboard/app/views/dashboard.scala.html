@@ -53,7 +53,7 @@
                 <li class="tab col s3"><a  href="#sourceSystems">Source Systems</a></li>
                 <li class="tab col s3"><a  href="#sourceFeeds">Feeds</a></li>
               </ul>
-              <div id="programs" class="col s12 z-depth-1">
+              <div id="programs" class="col s12 z-depth-1" >
                 <div class="collection">
                   <a href="#!" class="collection-item">DSL</a>
                   <a href="#!" class="collection-item">Networks</a>
@@ -346,10 +346,22 @@
         <li>
           <div class="collapsible-header"><h5>Tracking and Source Date</h5></div>
           <div class="collapsible-body">
-            <p>
-              <b>Firewall status:</b> - <br>
-              <b>eg Tables sourced:</b> - <br>
+            <a id="editTrackingandDS" href="#" class="waves-effect btn blue-text white" onclick="editTrackingandDS()">Edit</a>
+            <a id="saveTrackingandDS" href="#" class="waves-effect btn blue-text white" onclick="saveTrackingandDS()">Save</a>
+            <p id="trackingandDSReadView">
+              <b>Firewall Status:</b><span id="fireWallStatusVal"></span><br>
+              <b>Tables Sourced:</b><span id="tablesSourcedVal"></span><br>
             </p>
+            <form id="trackingandDSEditView">
+                <div class="row">
+                  <div>
+                    <label for="lblfireWallStatus">Firewall Status:</label>
+                    <input id="lblfireWallStatus" type="text" class="validate">
+                    <label for="lbltablesSourced">Tables Sourced:</label>
+                    <input id="lbltablesSourced" type="text" class="validate">
+                  </div>
+                </div>
+            </form>
           </div>
         </li>
       </ul>
@@ -369,6 +381,7 @@
   <script src="@routes.Assets.versioned("libs/materialize/js/materialize.min.js")"></script>
   <script src="@routes.Assets.versioned("libs/d3js/d3.min.js")"></script>
   <script src="@routes.Assets.versioned("libs/c3js/c3.min.js")"></script>
+  <script src="@routes.Assets.versioned("javascripts/mappings.js")"></script>
   <script src="@routes.Assets.versioned("javascripts/init.js")"></script>
   <script src="@routes.Assets.versioned("javascripts/graph.js")"></script>
 
