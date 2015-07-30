@@ -1,24 +1,21 @@
 #!/bin/bash
 
-#------------------------------------------------------------------------------
-# gscot.sh
-#------------------------------------------------------------------------------
+###############################################################################
 #
-# Great Scot - The Globalsoft COnfiguration Tool
+# setup.sh 
 #
-# Downloads and installs tools required for development environments on new 
-# Mac OS X machines.
+# Download and install prerequisites for the Dashboard application on 
+# Mac OS X 10.10.4 (Yosemite).
 #
-#------------------------------------------------------------------------------
-# Copyright GSoft Services Private Limited. All Rights Reserved.
-#------------------------------------------------------------------------------
+###############################################################################
+# Copyright (c) 2015 Servain Pty Ltd. All rights reserved.
+###############################################################################
 
 typeset -r SYSEXECS=/bin
 typeset -r E_OK=0
 typeset -r E_ABORT=1
 
-function Log 
-{
+function Log {
     typeset -r LogLevel=$1;
     shift 1;
 
@@ -32,145 +29,138 @@ function Log
     'ERROR')
         $SYSEXECS/echo 1>&2 "ERROR: $@"
         ;;
-    esac                                                                           
-    return $E_OK                                                                   
-}                                                                                  
-                                                                                   
-
-function printusage
-{                                                                                  
-    Log 'INFO' "usage: $0"
-    return 0                                                                         
-}                                                                                  
+    esac
+    return $E_OK
+} 
 
 
-function checkargs
-{                                                                                  
-    if [[ $# -ne 0 ]]; then                                                        
-        return 1                                                                     
-    fi                                                                             
-}                                                                                  
+#
+# Download and install Homebrew if required, update otherwise
+#
+function install_brew {
+    Log 'DEBUG' "function install_brew start"
 
-function download_and_install
-{            
-    typeset -a utilities
-    typeset utility_path
-
-    #
-    # Command line utilities
-    #
-
-    # Download and install OS X Command Line Tools
-    if [[ ! -x /usr/bin/gcc ]]; then
-        Log 'INFO' "| Install   | xcode command line tools"
-        sudo eval '/usr/bin/xcode-select --install'
-    fi
-
-    # Download, install and set path for Homebrew 
-    if [[ ! -x /usr/local/bin/brew ]]; then
-        Log 'INFO' "| Install   | homebrew"
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-        export PATH=/usr/local/bin:$PATH
+    if type -p brew; then
+        Log 'INFO' "Downloading Homebrew from github.com"
+        curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install
         brew doctor
-    fi
-
-    if [[ -x /usr/local/bin/brew ]]; then
-        # Download and install utilities for /usr/local/bin (alphabetical by utility)
-        utilities=( ansible dos2unix git hg jq nmap node python3 tree watch wget )
-
-        for utility in "${utilities[@]}" 
-        do
-            utility_path="/usr/local/bin/${utility}"
-            if [[ ! -x "${utility_path}" ]]; then
-                Log 'INFO' "| Install   | ${utility}"
-                brew install ${utility}
-            fi
-        done
-
-        if [[ ! -x /usr/local/bin/convert ]]; then
-            Log 'INFO' "| Install   | imagemagick"
-            brew install imagemagick 
-        fi
-
-        if [[ ! -x /usr/local/sbin/mtr ]]; then
-            Log 'INFO' "| Install   | mtr"
-            brew install mtr 
-        fi
     else
-        Log 'ERROR' "| Skipping Unix utility installation: /usr/local/bin/brew not found"
+        Log 'INFO' "Updating Homebrew"
+        brew update
+        brew upgrade
     fi
 
-    #
-    # Node.js related installables
-    #
-
-    if [[ -x /usr/local/bin/npm ]]; then
-        if [[ ! -x /usr/local/bin/bower ]]; then
-            Log 'INFO' "| Install   | bower"
-            npm install -g bower
-        fi
-
-        if [[ ! -x /usr/local/bin/grunt ]]; then
-            Log 'INFO' "| Install   | grunt-cli"
-            npm install -g grunt-cli
-        fi
-    else
-        Log 'ERROR' "| Skipping Node.js related installables: /usr/local/bin/npm not found"
-    fi
-
-
-    #
-    # Python related installables
-    #
-
-    # Download and install pip using easy_install
-    if [[ ! -x /usr/local/bin/pip ]]; then
-        Log 'INFO' "| Install  | pip"
-        sudo easy_install pip
-        if [[ $? -ne 0 ]]; then
-            Log 'ERROR' "| Unable to install pip"
-        fi
-    fi
-        
-
-    # Download and install Python modules through pip (Python installer)
-    if [[ -x /usr/local/bin/pip ]]; then
-
-        if [[ ! -x /usr/local/bin/pylint ]]; then
-            Log 'INFO' "| Install   | pylint (Python static-code checker)"
-            sudo pip install pylint
-        fi
-
-        if [[ ! -x /usr/local/bin/aws ]]; then
-            Log 'INFO' "| Install   | awscli (AWS command-line tools)"
-            sudo pip install awscli
-            sudo complete -C aws_completer aws       
-        fi
-
-        if [[ ! -x /Library/Python/2.7/site-packages/boto ]]; then
-            Log 'INFO' "| Install   | boto (Python AWS module)"
-            sudo pip install boto
-        fi
-
-    else
-        Log 'ERROR' "| Unable to install Python modules: /usr/local/bin/pip not found"
-    fi
-
-    return 0
+    Log 'DEBUG' "function install_brew end"
 }
 
+# 
+# Download and install Java if required
+#
+function install_java {
+    Log 'DEBUG' "function install_java start"
 
-function main                                                                      
-{                                                                                  
-    if ! checkargs "$@"; then                                                      
-        printusage                                                                 
-        exit 1                                                                     
-    fi                                                                             
+    if type -p java; then
+        _java=java
+    elif [[ -n "$JAVA_HOME" ]] && [[ -x "$JAVA_HOME/bin/java" ]];  then
+        echo found java executable in JAVA_HOME     
+        _java="$JAVA_HOME/bin/java"
+    else
+        Log 'INFO' "Downloading Java"
+        brew install caskroom/cask/brew-cask
+        brew tap caskroom/versions
+        #read -p "enter the java_version:"java_version
+        brew cask install java7
+    fi
 
+    if [[ "$_java" ]]; then
+        version=$("$_java" -version 2>&1 | awk -F '"' '/version/ {print $2}')
+    echo version "$version"
+        if [[ "$version" > "5.0" ]]; then
+            echo version is more than 1.5
+            else
+            echo "java Update"     
+        fi
+    fi
+
+    Log 'DEBUG' "function install_java end"
+}
+
+#
+# Download and install Scala if required
+#
+function install_scala {
+    Log 'DEBUG' "function install_scala start"
+
+    if type -p scala; then
+        echo "found scala executable" in PATH
+        _scala=scala
+    elif [[ -n "$SCALA_HOME" ]] && [[ -x "$SCALA_HOME/local/bin/scala" ]];  then
+        echo found scala executable in SCALA_HOME     
+        _scala="$SCALA_HOME/local/bin/scala"
+    else 
+        #Insatlling the Scala
+        Log 'INFO' "Downloading scala"
+        echo "Installing Scala"
+        #read -p "enter the scala_version:"scala_version
+        brew Install scala 2.11.7
+    fi
+
+    if [[ "$_scala" ]]; then
+        #version=$("$_scala" -version 2>&1 | awk -F '"' '/version/ {print $5}')
+        version=$(scala -version 2>&1 | awk '{print $5}')
+        echo version "$version"
+
+        if [[ "$version" > "2.9.3" ]]; then
+            echo "version is more than 1".
+        else    
+            echo "Scala Updated"
+        fi
+    fi
+
+    Log 'DEBUG' "function install_scala end"   
+} 
+
+#
+# Download and install TypeSafe Activator, if required
+#
+function install_activator
+{
+    Log 'DEBUG' "function install_activator start"
+
+    if type -p activator; then
+        _activator=activator
+    elif [[ -n "$activator_HOME" ]] && [[ -x "$activator_HOME/local/bin/scala" ]];  then
+        _scala="$activatorHOME/local/bin/scala"
+    else
+        Log 'INFO' "Downloading Activator"
+        #read -p "enter the Activator_version:"Activator_version
+        brew install activator 0.13.8 
+    fi
+
+    if [[ "$_activator" ]]; then
+        version=$(activator --version 2>&1 | awk '{print $4}')
+        if [[ "$version" > "2.9.3" ]]; then
+            echo version "$version"
+            echo "version is more than 1".
+        else    
+            echo "Activator-Update"
+        fi
+    fi
+    Log 'DEBUG' "function install_activator end" 
+}
+
+function download_and_install {
+    install_brew
+    install_java
+    install_scala
+    # install_activator
+}
+
+function main {
     download_and_install
 
     echo 'Done.'
-    exit 0                                                                         
-}                                                                                  
+    exit $E_OK
+}
 
-main "$@"              
+main "$@"
