@@ -248,4 +248,74 @@ def getColumnsFromDB(searchString:String):String = {
        return "true"
     }
 
+    def updateSSUDB(q:String,itdsr:String,srm:String):String = {
+       
+       var json = Json.toJson(1)
+        DB.withConnection("som") { implicit c =>
+          val query = SQL(
+            qs.
+            UPDATE_SSU.
+            replace("AAAAAA",itdsr).
+            replace("BBBBBB",srm).
+            replace("QQQQQQ",q)).
+            executeUpdate()
+          println(query)
+        }
+
+       return "true"
+    }
+
+    def updateTechnicalDetailsDB(
+      q:String,hda:String,hdfs1:String,fodu:String,
+      tdsba:String,dl:String,sdfsapf:String,fici:String,
+      dsm:String,hn:String,hi:String,pn:String,
+      n:String,di:String,flos:String,adss:String,oc:String
+      ):String = {
+       
+       var json = Json.toJson(1)
+        DB.withConnection("som") { implicit c =>
+          val query = SQL(
+            qs.
+            UPDATE_TECH_DETAILS.
+            replace("AAAAAA",hda).
+            replace("BBBBBB",hdfs1).
+            replace("CCCCCC",fodu).
+            replace("DDDDDD",tdsba).
+            replace("EEEEEE",dl).
+            replace("FFFFFF",sdfsapf).
+            replace("GGGGGG",fici).
+            replace("HHHHHH",dsm).
+            replace("IIIIII",hn).
+            replace("JJJJJJ",hi).
+            replace("KKKKKK",pn).
+            replace("LLLLLL",n).
+            replace("MMMMMM",di).
+            replace("NNNNNN",flos).
+            replace("OOOOOO",adss).
+            replace("PPPPPP",oc).
+            replace("QQQQQQ",q)).
+            executeUpdate()
+          println(query)
+        }
+
+       return "true"
+    }
+
+    def updateTrackingAndDSDB(q:String,fs:String,ts:String):String = {
+       
+       var json = Json.toJson(1)
+        DB.withConnection("som") { implicit c =>
+          val query = SQL(
+            qs.
+            UPDATE_TRACKING_AND_DS.
+            replace("AAAAAA",fs).
+            replace("BBBBBB",ts).
+            replace("QQQQQQ",q)).
+            executeUpdate()
+          println(query)
+        }
+
+       return "true"
+    }
+
 }

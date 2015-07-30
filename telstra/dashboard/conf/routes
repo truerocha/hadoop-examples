@@ -36,3 +36,9 @@ GET 	/updateInternal/:q/:us/:kb/:bdo 			controllers.Application.updateInternal(q
 GET 	/updateAppMetadata/:q/:appid/:dd/:ad/:uc/:cpd/:dl 			controllers.Application.updateAppMetadata(q:String,appid:String,dd:String,ad:String,uc:String,cpd:String,dl:String) 
 
 GET 	/updateSensitivityIndicators/:q/:cd/:fabi/:sci/:tiash/:ccd/:frd/:pd/:rd/:iahsdc/:nci/:nc 			controllers.Application.updateSensitivityIndicators(q:String,cd:String,fabi:String,sci:String,tiash:String,ccd:String,frd:String,pd:String,rd:String,iahsdc:String,nci:String,nc:String)  
+
+GET 	/updateSSU/:q/:itdsr/:srm			controllers.Application.updateSSU(q:String,itdsr:String,srm:String)
+
+GET 	/updateTechnicalDetails/:q/:hda/:hdfs1/:fodu/:tdsba/:dl/:sdfsapf/:fici/:dsm/:hn/:hi/:pn/:n/:di/:flos/:adss/:oc			controllers.Application.updateTechnicalDetails(q:String,hda:String,hdfs1:String,fodu:String,tdsba:String,dl:String,sdfsapf:String,fici:String,dsm:String,hn:String,hi:String,pn:String,n:String,di:String,flos:String,adss:String,oc:String)  
+
+GET 	/updateTrackingAndDS/:q/:fs/:ts			controllers.Application.updateTrackingAndDS(q:String,fs:String,ts:String)
