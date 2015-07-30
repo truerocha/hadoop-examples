@@ -67,6 +67,13 @@ function saveInternal(){
   $("#internalReadView").show();
   $("#internalEditView").hide();
 
+  // $.getJSON( "getSourceMatrix/livechat", function( data ) {
+  //   var result = data["status"]
+
+    
+
+  // });
+
   // Load Internal Data into Form
   $( "#userStoryVal" ).html( $('#lbluserstory').val() );
   $( "#kanbanStateVal" ).html( $('#lblkanbanstate').val() );

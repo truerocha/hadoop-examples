@@ -79,7 +79,7 @@ package object Application extends Controller {
     Ok(response)
   }
  
-    def updateSensitivityIndicators(
+  def updateSensitivityIndicators(
       q:String,cd:String,fabi:String,sci:String,
       tiash:String,ccd:String,frd:String,pd:String,
       rd:String,iahsdc:String,nci:String,nc:String
@@ -89,6 +89,48 @@ package object Application extends Controller {
       q,cd,fabi,sci,tiash,ccd,frd,pd,rd,iahsdc,nci,nc
       )
     
+    val response = Json.toJson(
+      Map(
+          "status" -> Json.toJson(result)
+        ))
+
+    Ok(response)
+  }
+
+  def updateSSU(q:String,itdsr:String,srm:String) = Action {
+    var result = qdb.updateSSUDB(q,itdsr,srm)
+
+    val response = Json.toJson(
+      Map(
+          "status" -> Json.toJson(result)
+        ))
+
+    Ok(response)
+  }
+
+  def updateTechnicalDetails(
+      q:String,hda:String,hdfs1:String,fodu:String,
+      tdsba:String,dl:String,sdfsapf:String,fici:String,
+      dsm:String,hn:String,hi:String,pn:String,
+      n:String,di:String,flos:String,adss:String,oc:String
+      ) = Action {
+
+    var result = qdb.updateTechnicalDetailsDB(
+      q,hda,hdfs1,fodu,tdsba,dl,sdfsapf,fici,
+      dsm,hn,hi,pn,n,di,flos,adss,oc
+      )
+    
+    val response = Json.toJson(
+      Map(
+          "status" -> Json.toJson(result)
+        ))
+
+    Ok(response)
+  }
+
+  def updateTrackingAndDS(q:String,fs:String,ts:String) = Action {
+    var result = qdb.updateTrackingAndDSDB(q,fs,ts)
+
     val response = Json.toJson(
       Map(
           "status" -> Json.toJson(result)
