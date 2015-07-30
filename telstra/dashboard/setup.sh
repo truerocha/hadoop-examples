@@ -102,7 +102,7 @@ function install_scala {
         Log 'INFO' "Downloading scala"
         echo "Installing Scala"
         #read -p "enter the scala_version:"scala_version
-        brew Install scala 2.11.7
+        brew Install scala 
     fi
 
     if [[ "$_scala" ]]; then
@@ -121,39 +121,39 @@ function install_scala {
 } 
 
 #
-# Download and install TypeSafe Activator, if required
+# Download and install sbt, if required
 #
-function install_activator
+function install_sbt
 {
-    Log 'DEBUG' "function install_activator start"
+    Log 'DEBUG' "function install_sbt start"
 
-    if type -p activator; then
-        _activator=activator
-    elif [[ -n "$activator_HOME" ]] && [[ -x "$activator_HOME/local/bin/scala" ]];  then
-        _scala="$activatorHOME/local/bin/scala"
+    if type -p sbt; then
+        _sbt=sbt
+    elif [[ -n "$sbt_HOME" ]] && [[ -x "$sbt_HOME/local/bin/scala" ]];  then
+        _scala="$sbtHOME/local/bin/scala"
     else
-        Log 'INFO' "Downloading Activator"
-        #read -p "enter the Activator_version:"Activator_version
-        brew install activator 0.13.8 
+        Log 'INFO' "Downloading sbt"
+        #read -p "enter the sbt_version:"sbt_version
+        brew install sbt 
     fi
 
-    if [[ "$_activator" ]]; then
-        version=$(activator --version 2>&1 | awk '{print $4}')
+    if [[ "$_sbt" ]]; then
+        version=$(sbt --version 2>&1 | awk '{print $4}')
         if [[ "$version" > "2.9.3" ]]; then
             echo version "$version"
             echo "version is more than 1".
         else    
-            echo "Activator-Update"
+            echo "sbt-Update"
         fi
     fi
-    Log 'DEBUG' "function install_activator end" 
+    Log 'DEBUG' "function install_sbt end" 
 }
 
 function download_and_install {
     install_brew
     install_java
     install_scala
-    # install_activator
+    install_sbt
 }
 
 function main {

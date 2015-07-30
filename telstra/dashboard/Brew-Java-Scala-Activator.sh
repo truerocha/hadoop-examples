@@ -45,7 +45,7 @@ function Log
          Log 'DEBUG' "function install_brew end"
  }
 
-# Check Java is installed or not, If java is installed check Version,Download and installed of Java
+#Check Java is installed or not, If java is installed check Version,Download and installed of Java
 
 function install_java {
  
