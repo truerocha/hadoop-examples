@@ -54,5 +54,17 @@ package object Application extends Controller {
     Ok(jsonString)
   }
 
+  def updateInternal(q:String,us:String,kb:String,bdo:String) = Action {
+
+
+    var result = qdb.updateInternalDB(q,us,kb,bdo)
+
+    val response = Json.toJson(
+      Map(
+          "status" -> Json.toJson(result)
+        ))
+
+    Ok(response)
+  }
 } 
 

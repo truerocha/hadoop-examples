@@ -69,5 +69,13 @@ class QueryString {
                     """
 
   var GET_SOM="SELECT * FROM SOURCE_OPTION_MATRIX_V4 WHERE source LIKE '%XXXXXX%'"
+
+  var UPDATE_INTERNAL=""" UPDATE SOURCE_OPTION_MATRIX_V4
+                          SET 
+                          user_story='AAAAAA', 
+                          kanban_state='BBBBBB', 
+                          big_data_owner='CCCCCC'
+                          WHERE source='QQQQQQ'
+                      """
   
 }

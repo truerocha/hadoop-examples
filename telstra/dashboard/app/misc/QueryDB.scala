@@ -172,4 +172,15 @@ def getColumnsFromDB(searchString:String):String = {
      return jsonString
   }
   
+    def updateInternalDB(q:String,us:String,kb:String,bdo:String):String = {
+       
+       var json = Json.toJson(1)
+        DB.withConnection("som") { implicit c =>
+          val query = SQL(qs.UPDATE_INTERNAL.replace("AAAAAA",us).replace("BBBBBB",kb).replace("CCCCCC",bdo).replace("QQQQQQ",q)).executeUpdate()
+          println(query)
+        }
+
+       return "true"
+    }
+
 }

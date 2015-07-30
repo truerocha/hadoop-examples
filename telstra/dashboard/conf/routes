@@ -30,3 +30,5 @@ GET     /getColumns/:searchString               controllers.Application.getColum
 
 # get Source Matrix Page
 GET     /getSourceMatrix/:searchString                 			controllers.Application.getSourceMatrix(searchString:String)
+
+GET 	/updateInternal/:q/:us/:kb/:bdo 			controllers.Application.updateInternal(q:String,us:String,kb:String,bdo:String)
