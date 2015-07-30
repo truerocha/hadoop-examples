@@ -50,7 +50,7 @@ function initEditSaveDivTags(){
 }
 
 function setPanelData(){
-  $.getJSON( "getSourceMatrix/livechat", function( data ) {
+  $.getJSON( "getSourceMatrix/source5", function( data ) {
     var result = data["som"][0]
     for (var key in map) {
         $( map[key] ).html( result[key] );

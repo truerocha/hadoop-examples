@@ -62,17 +62,32 @@ function editInternal(){
 
 function saveInternal(){
   //Manage Buttons Behaviour
+
+  var source = $( "#sourceVal" ).text();
+  var userStory = $( "#userStoryVal" ).text();
+  var kanbanState = $( "#kanbanStateVal" ).text();
+  var bigDataOwner = $( "#bigDataOwnerVal" ).text();
+
   $("#saveInternal").hide();
   $("#editInternal").show();
   $("#internalReadView").show();
   $("#internalEditView").hide();
 
-  // $.getJSON( "getSourceMatrix/livechat", function( data ) {
-  //   var result = data["status"]
+  $.getJSON( "updateInternal/" + 
+    source + "/" +
+    userStory + "/" +
+    kanbanState + "/" +
+    bigDataOwner
+    , function( data ) {
+    var result = data["status"]
 
-    
+    console.log( "updateInternal/" + 
+    $( "#sourceVal" ).text() + "/" +
+    $( "#userStoryVal" ).text() + "/" +
+    $( "#kanbanStateVal" ).text() + "/" +
+    $( "#bigDataOwnerVal" ).text() + " DB Status" + result)
 
-  // });
+  });
 
   // Load Internal Data into Form
   $( "#userStoryVal" ).html( $('#lbluserstory').val() );
