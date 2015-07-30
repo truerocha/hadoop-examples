@@ -1,5 +1,4 @@
 #!/bin/bash
-
 typeset -r SYSEXECS=/bin
 typeset -r E_OK=0
 typeset -r E_ABORT=1
@@ -24,11 +23,11 @@ function Log
 } 
 
 
-Install brew if not installed already, otherwise update to latest version.
+#Install brew if not installed already, otherwise update to latest version.
 
  function install_brew
  {
-     Log 'DEBUG' "function install_brew start"
+         Log 'DEBUG' "function install_brew start"
  
      if type -p brew; then
      
@@ -43,14 +42,14 @@ Install brew if not installed already, otherwise update to latest version.
          brew upgrade
      fi
  
-     Log 'DEBUG' "function install_brew end"
+         Log 'DEBUG' "function install_brew end"
  }
 
 # Check Java is installed or not, If java is installed check Version,Download and installed of Java
 
 function install_java {
  
-     Log 'DEBUG' "function download_and_install start"
+         Log 'DEBUG' "function download_and_install start"
   
      if type -p java; then
          echo found java executable in PATH
@@ -78,7 +77,7 @@ function install_java {
          fi
      fi
      
-     Log 'DEBUG' "function download_and_install end"
+         Log 'DEBUG' "function download_and_install end"
  
  }
 
@@ -87,7 +86,7 @@ function install_java {
 function install_scala
 {
 
-     Log 'DEBUG' "function download_and_install start"
+        Log 'DEBUG' "function download_and_install start"
 
      if type -p scala; then
           echo "found scala executable" in PATH
@@ -100,7 +99,7 @@ function install_scala
          Log 'INFO' "Downloading scala"
           echo "Installing Scala"
           #read -p "enter the scala_version:"scala_version
-           brew Install scala 2.11.7
+         brew Install scala 2.11.7
       fi
 
       if [[ "$_scala" ]]; then
@@ -116,7 +115,7 @@ function install_scala
           fi
       fi
 
-            Log 'DEBUG' "function download_and_install end"   
+          Log 'DEBUG' "function download_and_install end"   
 } 
 
 #Check Typesafe Activator is installed or not, If typesafe Activator is installed check Version, Download and installed lastest Version of Java 
@@ -124,7 +123,7 @@ function install_scala
 function install_Activator
 {
 
-        Log 'DEBUG' "function download_install_brew start"
+          Log 'DEBUG' "function download_install_brew start"
 
      if type -p activator; then
          echo "found activator executable" in $PATH
@@ -137,7 +136,7 @@ function install_Activator
          Log 'INFO' "Downloading Activator"
          echo "Installing Activator"
          #read -p "enter the Activator_version:"Activator_version
-          brew install activator 0.13.8 
+         brew install activator 0.13.8 
      fi
 
      if [[ "$_activator" ]]; then
@@ -152,7 +151,7 @@ function install_Activator
          fi
      fi   
 
-        Log 'DEBUG' "function download_and_install end" 
+          Log 'DEBUG' "function download_and_install end" 
 }
 
 
