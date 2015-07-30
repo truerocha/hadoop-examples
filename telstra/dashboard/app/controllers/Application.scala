@@ -16,8 +16,8 @@ import misc.QueryDB
 
 package object Application extends Controller {
     
-    val qdb = new QueryDB
-    
+  val qdb = new QueryDB
+
   def index = Action {
     Ok(views.html.index("Your new application is ready."))
   }
@@ -55,10 +55,40 @@ package object Application extends Controller {
   }
 
   def updateInternal(q:String,us:String,kb:String,bdo:String) = Action {
-
-
     var result = qdb.updateInternalDB(q,us,kb,bdo)
 
+    val response = Json.toJson(
+      Map(
+          "status" -> Json.toJson(result)
+        ))
+
+    Ok(response)
+  }
+
+  def updateAppMetadata(
+      q:String,appid:String,dd:String,
+      ad:String,uc:String,cpd:String,dl:String) = Action {
+
+    var result = qdb.updateApplicationMetadataDB(q,appid,dd,ad,uc,cpd,dl)
+    
+    val response = Json.toJson(
+      Map(
+          "status" -> Json.toJson(result)
+        ))
+
+    Ok(response)
+  }
+ 
+    def updateSensitivityIndicators(
+      q:String,cd:String,fabi:String,sci:String,
+      tiash:String,ccd:String,frd:String,pd:String,
+      rd:String,iahsdc:String,nci:String,nc:String
+      ) = Action {
+
+    var result = qdb.updateSensitivityIndicatorsDB(
+      q,cd,fabi,sci,tiash,ccd,frd,pd,rd,iahsdc,nci,nc
+      )
+    
     val response = Json.toJson(
       Map(
           "status" -> Json.toJson(result)
