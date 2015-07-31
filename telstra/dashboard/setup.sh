@@ -59,14 +59,14 @@ function install_java {
     Log 'DEBUG' "function install_java start"
 
     if type -p java; then
-        version=$("java" -version 2>&1 | awk -F '"' '/version/ {print $2}')
+        version=$(java -version 2>&1 | awk -F '"' '/version/ {print $2}')
         Log 'INFO' "Java version $version detected."
-        if [[ "$version" > "1.8.0" ]]; then
+        if [[ "$version" == "1.8.0_45" ]]; then
             echo "your Java is Up-to-date"
         else
             Log 'INFO' "Upgrading Java"
-            userChoise=$(userUpdate)
-            if [[ $userChoise == 'y' ]]; then
+            userChoice=$(userUpdate)
+            if [[ $userChoice == 'y' ]]; then
                	brew install caskroom/cask/brew-cask
             	brew tap caskroom/versions
             	#read -p "enter the java_version:"java_version
@@ -93,13 +93,14 @@ function install_scala {
     Log 'DEBUG' "function install_scala start"
 
     if type -p scala; then
-        version=$("scala" -version 2>&1 | awk -F '"' '/version/ {print $2}')
+         version=$(scala -version 2>&1 | awk '/version/ {print $5}')
          Log 'INFO' "Scala version $version detected."
-        if [[ "$version" > "2.11.6" ]]; then
+        if [[ "$version" == "2.11.7" ]]; then
             echo "Your Scala Up-To-Date"
         else
-            userChoise=$(userUpdate)
-            if [[ $userChoise == 'y' ]]; then 
+            userChoice=$(userUpdate)
+            echo $userChoice
+            if [[ $userChoice == 'y' ]]; then 
             echo Updating...........
             #Insatlling the Scala
             Log 'INFO' "Downloading scala"
@@ -135,8 +136,8 @@ function install_sbt
         if [[ "$version" > "0.13.7" ]]; then
             echo "Your sbt Update".
         else 
-             userChoise=$(userUpdate)
-            if [[ $userChoise == 'y' ]]; then
+             userChoice=$(userUpdate)
+            if [[ $userChoice == 'y' ]]; then
             echo Updating...........   
            Log 'INFO' "Downloading sbt"
             #read -p "enter the sbt_version:"sbt_version
@@ -156,9 +157,9 @@ function install_sbt
 }
 
 function userUpdate {
-      read -p "Type Y/N to proceed: " userChoise
-      userChoise=$(echo $userChoise | tr 'A-Z' 'a-z')
-      echo userChoise
+      read -p "Want to Update Type Y/N to proceed: " userChoice
+      userChoice=$(echo $userChoice | tr 'A-Z' 'a-z')
+      echo $userChoice
 }
 
 function download_and_install {
