@@ -16,10 +16,6 @@ $(document).ready(function(){
     $('ul.tabs').tabs();
   });
 
-function showSearchResults(){
-      $("#results").show();
-}
-
 function initEditSaveDivTags(){
   // Search Results
   $("#results").hide();
@@ -49,19 +45,30 @@ function initEditSaveDivTags(){
   $("#trackingandDSEditView").hide();
 }
 
-function setPanelData(){
-  $.getJSON( "getSourceMatrix/source5", function( data ) {
+function setPanelData(searchString){
+  
+  $.getJSON( 
+    "getSourceMatrix/" + searchString, function( data ) {
     var result = data["som"][0]
     for (var key in map) {
         $( map[key] ).html( result[key] );
     }
     console.log(data["som"][0]);
   });
+
+}
+
+function onBtnSearchClick() {
+  
+  var searchString = $( "#search" ).val();
+  console.log(searchString);
+
+  setPanelData(searchString);
+  $("#results").show();
 }
 
 $(document).ready(function() {
 
       initEditSaveDivTags();
-      setPanelData();
       
 });
