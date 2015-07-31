@@ -162,10 +162,10 @@ function userUpdate {
 }
 
 function download_and_install {
-         #install_brew
+         install_brew
          install_java
-         #install_scala
-         #install_sbt
+         install_scala
+         install_sbt
 }
 
 function main {
