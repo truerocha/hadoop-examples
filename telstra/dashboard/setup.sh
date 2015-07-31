@@ -32,8 +32,6 @@ function Log {
     esac
     return $E_OK
 } 
-
-
 #
 # Download and install Homebrew if required, update otherwise
 #
@@ -41,13 +39,13 @@ function install_brew {
     Log 'DEBUG' "function install_brew start"
 
     if type -p brew; then
-        Log 'INFO' "Downloading Homebrew from github.com"
-        curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install
-        brew doctor
+            Log 'INFO' "Updating Homebrew"
+            brew update
+            brew upgrade
     else
-        Log 'INFO' "Updating Homebrew"
-        brew update
-        brew upgrade
+            Log 'INFO' "Downloading Homebrew from github.com"
+            curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install
+            brew doctor
     fi
 
     Log 'DEBUG' "function install_brew end"
@@ -60,26 +58,25 @@ function install_java {
     Log 'DEBUG' "function install_java start"
 
     if type -p java; then
-        _java=java
-    elif [[ -n "$JAVA_HOME" ]] && [[ -x "$JAVA_HOME/bin/java" ]];  then
-        echo found java executable in JAVA_HOME     
-        _java="$JAVA_HOME/bin/java"
-    else
-        Log 'INFO' "Downloading Java"
-        brew install caskroom/cask/brew-cask
-        brew tap caskroom/versions
-        #read -p "enter the java_version:"java_version
-        brew cask install java7
+             version=$("java" -version 2>&1 | awk -F '"' '/version/ {print $2}')
+             echo version "$version"
+       if [[ "$version" > "1.8.0" ]]; then
+            echo "Your Java Update"
+       else 
+       	     echo Updating...........
+        	 Log 'INFO' "Downloading Java"
+             brew install caskroom/cask/brew-cask
+             brew tap caskroom/versions
+             #read -p "enter the java_version:"java_version
+             brew cask install java
     fi
-
-    if [[ "$_java" ]]; then
-        version=$("$_java" -version 2>&1 | awk -F '"' '/version/ {print $2}')
-    echo version "$version"
-        if [[ "$version" > "5.0" ]]; then
-            echo version is more than 1.5
-            else
-            echo "java Update"     
-        fi
+    
+    else
+            Log 'INFO' "Downloading Java"
+            brew install caskroom/cask/brew-cask
+            brew tap caskroom/versions
+            #read -p "enter the java_version:"java_version
+            brew cask install java
     fi
 
     Log 'DEBUG' "function install_java end"
@@ -92,34 +89,32 @@ function install_scala {
     Log 'DEBUG' "function install_scala start"
 
     if type -p scala; then
-        echo "found scala executable" in PATH
-        _scala=scala
-    elif [[ -n "$SCALA_HOME" ]] && [[ -x "$SCALA_HOME/local/bin/scala" ]];  then
-        echo found scala executable in SCALA_HOME     
-        _scala="$SCALA_HOME/local/bin/scala"
+    	     version=$("scala" -version 2>&1 | awk -F '"' '/version/ {print $2}')
+             echo version "$version"
+        if [[ "$version" > "1.8.0" ]]; then
+            echo "Your Java Update"
+          
+        else 
+        	echo Updating...........
+            #Insatlling the Scala
+           Log 'INFO' "Downloading scala"
+           echo "Installing Scala"
+           #read -p "enter the scala_version:"scala_version
+           brew Install scala   
+            
+        fi    
+
     else 
-        #Insatlling the Scala
-        Log 'INFO' "Downloading scala"
-        echo "Installing Scala"
-        #read -p "enter the scala_version:"scala_version
-        brew Install scala 
-    fi
-
-    if [[ "$_scala" ]]; then
-        #version=$("$_scala" -version 2>&1 | awk -F '"' '/version/ {print $5}')
-        version=$(scala -version 2>&1 | awk '{print $5}')
-        echo version "$version"
-
-        if [[ "$version" > "2.9.3" ]]; then
-            echo "version is more than 1".
-        else    
-            echo "Scala Updated"
-        fi
+          
+           #Insatlling the Scala
+           Log 'INFO' "Downloading scala"
+           echo "Installing Scala"
+           #read -p "enter the scala_version:"scala_version
+           brew Install scala 
     fi
 
     Log 'DEBUG' "function install_scala end"   
 } 
-
 #
 # Download and install sbt, if required
 #
@@ -128,39 +123,38 @@ function install_sbt
     Log 'DEBUG' "function install_sbt start"
 
     if type -p sbt; then
-        _sbt=sbt
-    elif [[ -n "$sbt_HOME" ]] && [[ -x "$sbt_HOME/local/bin/scala" ]];  then
-        _scala="$sbtHOME/local/bin/scala"
-    else
-        Log 'INFO' "Downloading sbt"
-        #read -p "enter the sbt_version:"sbt_version
-        brew install sbt 
-    fi
-
-    if [[ "$_sbt" ]]; then
-        version=$(sbt --version 2>&1 | awk '{print $4}')
-        if [[ "$version" > "2.9.3" ]]; then
-            echo version "$version"
-            echo "version is more than 1".
-        else    
-            echo "sbt-Update"
+           version=$(sbt --version 2>&1 | awk '{print $4}')
+           echo version "$version"
+        if [[ "$version" > "0.13.7" ]]; then
+           echo "Your sbt Update".
+        else 
+           echo Updating...........   
+           Log 'INFO' "Downloading sbt"
+           #read -p "enter the sbt_version:"sbt_version
+           brew install sbt
         fi
+        
+    else
+           Log 'INFO' "Downloading sbt"
+           #read -p "enter the sbt_version:"sbt_version
+           brew install sbt 
     fi
+    
     Log 'DEBUG' "function install_sbt end" 
 }
 
 function download_and_install {
-    install_brew
-    install_java
-    install_scala
-    install_sbt
+         install_brew
+         install_java
+         install_scala
+         install_sbt
 }
 
 function main {
-    download_and_install
+        download_and_install
 
-    echo 'Done.'
-    exit $E_OK
+        echo 'Done.'
+        exit $E_OK
 }
 
 main "$@"
