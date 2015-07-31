@@ -65,9 +65,10 @@ function install_java {
             echo "your Java is Up-to-date"
         else
             Log 'INFO' "Upgrading Java"
+            echo "This tool requires Java version 1.8.0 or greater. Java $version has been detected in your system."
             userChoice=$(userUpdate)
             if [[ $userChoice == 'y' ]]; then
-               	brew install caskroom/cask/brew-cask
+               	brew install caskroom/cask/brew-cask 
             	brew tap caskroom/versions
             	#read -p "enter the java_version:"java_version
             	brew cask install java
@@ -98,6 +99,7 @@ function install_scala {
         if [[ "$version" == "2.11.7" ]]; then
             echo "Your Scala Up-To-Date"
         else
+            echo "This tool requires Scala version 2.11 or greater. Scala $version has been detected in your system."
             userChoice=$(userUpdate)
             echo $userChoice
             if [[ $userChoice == 'y' ]]; then 
@@ -133,9 +135,10 @@ function install_sbt
     if type -p sbt; then
         version=$(sbt --version 2>&1 | awk '{print $4}')
          Log 'INFO' "version $version detecetd."
-        if [[ "$version" > "0.13.7" ]]; then
+        if [[ "$version" == "0.13.8" ]]; then
             echo "Your sbt Update".
         else 
+             echo "This tool requires sbt version 0.13 or greater. sbt $version has been detected in your system."
              userChoice=$(userUpdate)
             if [[ $userChoice == 'y' ]]; then
             echo Updating...........   
@@ -157,7 +160,7 @@ function install_sbt
 }
 
 function userUpdate {
-      read -p "Want to Update Type Y/N to proceed: " userChoice
+      read -p "Type Y/N to proceed: " userChoice
       userChoice=$(echo $userChoice | tr 'A-Z' 'a-z')
       echo $userChoice
 }
