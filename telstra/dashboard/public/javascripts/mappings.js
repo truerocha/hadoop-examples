@@ -64,9 +64,9 @@ function saveInternal(){
   //Manage Buttons Behaviour
 
   var source = $( "#sourceVal" ).text();
-  var userStory = $( "#userStoryVal" ).text();
-  var kanbanState = $( "#kanbanStateVal" ).text();
-  var bigDataOwner = $( "#bigDataOwnerVal" ).text();
+  var userStory = $( "#lbluserstory" ).val();
+  var kanbanState = $( "#lblkanbanstate" ).val();
+  var bigDataOwner = $( "#lblbigdataowner" ).val();
 
   $("#saveInternal").hide();
   $("#editInternal").show();
@@ -80,12 +80,6 @@ function saveInternal(){
     bigDataOwner
     , function( data ) {
     var result = data["status"]
-
-    console.log( "updateInternal/" + 
-    $( "#sourceVal" ).text() + "/" +
-    $( "#userStoryVal" ).text() + "/" +
-    $( "#kanbanStateVal" ).text() + "/" +
-    $( "#bigDataOwnerVal" ).text() + " DB Status" + result)
 
   });
 
