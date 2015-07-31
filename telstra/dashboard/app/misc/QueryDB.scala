@@ -145,6 +145,7 @@ def getColumnsFromDB(searchString:String):String = {
             "historical_data_available1" -> row[String]("historical_data_available1"),
             "historical_data_file_size1" -> row[String]("historical_data_file_size1"),
             "frequency_of_delta_update1" -> row[String]("frequency_of_delta_update1"),
+            "time_data_should_be_available1" -> row[String]("time_data_should_be_available1"), 
             "data_latency" -> row[String]("data_latency"),
             "subsequent_data_file_size_as_per_frequency" -> row[String]("subsequent_data_file_size_as_per_frequency"),
             "sensitive_customer_information" -> row[String]("sensitive_customer_information"),

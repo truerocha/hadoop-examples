@@ -106,18 +106,40 @@ function editAppMeta(){
 }
 
 function saveAppMeta(){
+
+  var source = $( "#sourceVal" ).text();
+  var app_id = $( "#lblAppID" ).val();
+  var data_description = $( "#lblDataDesc" ).val();
+  var architecture_domain = $( "#lblArchDom" ).val();
+  var use_cases = $( "#lblUseCases" ).val();
+  var contact_person_details = $( "#lblContactDetails" ).val();
+  var data_layout = $( "#lblDataLayout" ).val();
+
   $("#saveAppMetadata").hide();
   $("#editAppMetadata").show();
   $("#appMetaReadView").show();
   $("#appMetaEditView").hide();
 
-  $( "#appIDVal" ).html( $('#lblAppID').val() );
-  $( "#sourceVal" ).html( $('#lblSource').val() );
-  $( "#dataDescriptionVal" ).html( $('#lblDataDesc').val() );
-  $( "#architectureDomainVal" ).html( $('#lblArchDom').val() );
-  $( "#useCaseVal" ).html( $('#lblUseCases').val() );
-  $( "#contactDetailsVal" ).html( $('#lblContactDetails').val() );
-  $( "#dataLayoutVal" ).html( $('#lblDataLayout').val() );
+  $.getJSON( "updateAppMetadata/" + 
+    source + "/" +
+    app_id + "/" +
+    data_description + "/" +
+    architecture_domain + "/" +
+    use_cases + "/" +
+    contact_person_details + "/" +
+    data_layout
+    , function( data ) {
+    var result = data["status"]
+
+  });
+
+  $( "#appIDVal" ).html( $('#lblAppID').val());
+  $( "#sourceVal" ).html( $('#lblSource').val());
+  $( "#dataDescriptionVal" ).html( $('#lblDataDesc').val());
+  $( "#architectureDomainVal" ).html( $('#lblArchDom').val());
+  $( "#useCaseVal" ).html( $('#lblUseCases').val());
+  $( "#contactDetailsVal" ).html( $('#lblContactDetails').val());
+  $( "#dataLayoutVal" ).html( $('#lblDataLayout').val());
 }
 
 function editSensitivityIndicators(){
@@ -140,10 +162,42 @@ function editSensitivityIndicators(){
 }
 
 function saveSensitivityIndicators(){
+
+  var source = $( "#sourceVal" ).text();
+  var customer_data = $( "#lblcustomerData" ).val();
+  var financial_and_banking_information = $( "#lblfinancialAndBankInfo" ).val();
+  var sensitive_customer_information = $( "#lblsensitiveCustomerInfo" ).val();
+  var telstra_identifiers_and_service_history = $( "#lbltelstraIdentifier" ).val();
+  var credit_card_data = $( "#lblcreditCardData" ).val();
+  var financial_reporting_data = $( "#lblfinancialReportingData" ).val();
+  var privacy_data = $( "#lblprivacyData" ).val();
+  var regulatory_data = $( "#lblregulatoryData" ).val();
+  var is_any_high_sensitivity_data_captured = $( "#lblisSensitiveData" ).val();
+  var nbn_confidential_information = $( "#lblnbnConfidentialInfo" ).val();
+  var nbn_compliant = $( "#lblnbnCompiant" ).val();
+
   $("#saveSensitivityIndicators").hide();
   $("#editSensitivityIndicators").show();
   $("#sensitivityIndicatorsReadView").show();
   $("#sensitivityIndicatorsEditView").hide();
+
+  $.getJSON( "updateSensitivityIndicators/" + 
+    source + "/" +
+    customer_data + "/" +
+    financial_and_banking_information + "/" +
+    sensitive_customer_information + "/" +
+    telstra_identifiers_and_service_history + "/" +
+    credit_card_data + "/" +
+    financial_reporting_data + "/" +
+    privacy_data + "/" +
+    regulatory_data + "/" +
+    is_any_high_sensitivity_data_captured + "/" +
+    nbn_confidential_information + "/" +
+    nbn_compliant 
+    , function( data ) {
+    var result = data["status"]
+
+  });
 
   $( "#customerDataVal" ).html( $('#lblcustomerData').val() );
   $( "#financialAndBankInfoVal" ).html( $('#lblfinancialAndBankInfo').val() );
@@ -171,11 +225,25 @@ function editSSU(){
 }
 
 function saveSSU(){
+
+  var source = $( "#sourceVal" ).text();
+  var is_this_data_ssu_ready = $( "#lblIsSSUReady" ).val();
+  var ssu_remediation_method = $( "#lblSSURemediationMethod" ).val();
+
   //Manage Buttons Behaviour
   $("#saveSSU").hide();
   $("#editSSU").show();
   $("#sSUReadView").show();
   $("#sSUEditView").hide();
+
+  $.getJSON( "updateSSU/" + 
+    source + "/" +
+    is_this_data_ssu_ready + "/" +
+    ssu_remediation_method 
+    , function( data ) {
+    var result = data["status"]
+
+  });
 
   // Load Internal Data into Form
   $( "#isSSUReadyVal" ).html( $('#lblIsSSUReady').val() );
@@ -208,10 +276,52 @@ function editTechnicalDetails(){
 }
 
 function saveTechnicalDetails(){
+
+  var source = $( "#sourceVal" ).text();
+  var historical_data_available1 = $( "#lblhistDataAvail" ).val();
+  var historical_data_file_size1 = $( "#lblhistDataSize" ).val();
+  var frequency_of_delta_update1 = $( "#lblfreqDelta" ).val();
+  var time_data_should_be_available1 = $( "#lbltimeDataAvail" ).val();
+  var data_latency = $( "#lbldataLatency" ).val();
+  var subsequent_data_file_size_as_per_frequency = $( "#lblsubDataSize" ).val();
+  var format_it_comes_in = $( "#lblformat" ).val();
+  var data_sourcing_method = $( "#lbldataSourcing" ).val();
+  var host_name = $( "#lblhostName" ).val();
+  var host_ip = $( "#lblhostIP" ).val();
+  var port_number = $( "#lblportNumber" ).val();
+  var network = $( "#lblnetwork" ).val();
+  var database_instance = $( "#lbldbInstance" ).val();
+  var file_location_on_server = $( "#lblfileLoc" ).val();
+  var api_data_sourcing_string = $( "#lblapiDS" ).val();
+  var other_comments = $( "#lblotherComments" ).val();
+
   $("#saveTechnicalDetails").hide();
   $("#editTechnicalDetails").show();
   $("#tdReadView").show();
   $("#tdEditView").hide();
+
+  $.getJSON( "updateTechnicalDetails/" + 
+    source + "/" +
+    historical_data_available1 + "/" +
+    historical_data_file_size1 + "/" +
+    frequency_of_delta_update1 + "/" +
+    time_data_should_be_available1 + "/" +
+    data_latency + "/" +
+    subsequent_data_file_size_as_per_frequency + "/" +
+    format_it_comes_in + "/" +
+    data_sourcing_method + "/" +
+    host_name + "/" +
+    host_ip + "/" +
+    port_number + "/" +
+    network + "/" +
+    database_instance + "/" +
+    file_location_on_server + "/" +
+    api_data_sourcing_string + "/" +
+    other_comments 
+    , function( data ) {
+    var result = data["status"]
+
+  });
 
   $( "#histDataAvailVal" ).html( $('#lblhistDataAvail').val() );
   $( "#histDataSizeVal" ).html( $('#lblhistDataSize').val() );
@@ -237,20 +347,34 @@ function editTrackingandDS(){
   $("#trackingandDSEditView").show();
   $("#trackingandDSReadView").hide();
 
-  $("#lblfireWallStatus").val($( "#fireWallStatus" ).text());
-  $("#lbltablesSourced").val($( "#tablesSourced" ).text());
+  $("#lblfireWallStatus").val($( "#fireWallStatusVal" ).text());
+  $("#lbltablesSourced").val($( "#tablesSourcedVal" ).text());
 
 }
 
 function saveTrackingandDS(){
+  
+  var source = $( "#sourceVal" ).text();
+  var firewall_status = $( "#lblfireWallStatus" ).val();
+  var tables_sourced = $( "#lbltablesSourced" ).val();
+
   //Manage Buttons Behaviour
   $("#saveTrackingandDS").hide();
   $("#editTrackingandDS").show();
   $("#trackingandDSReadView").show();
   $("#trackingandDSEditView").hide();
 
+    $.getJSON( "updateTrackingAndDS/" + 
+    source + "/" +
+    firewall_status + "/" +
+    tables_sourced 
+    , function( data ) {
+    var result = data["status"]
+
+  });
+
   // Load Internal Data into Form
-  $( "#fireWallStatus" ).html( $('#lblfireWallStatus').val() );
-  $( "#tablesSourced" ).html( $('#lbltablesSourced').val() );
+  $( "#fireWallStatusVal" ).html( $('#lblfireWallStatus').val() );
+  $( "#tablesSourcedVal" ).html( $('#lbltablesSourced').val() );
 
 }
